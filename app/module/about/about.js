@@ -11,10 +11,16 @@
     function about($scope, common) {
 
         $scope.message = "This is About Page";
+
+        $scope.submit = submit();
         activate();
         function activate() {
             common.activateController([], controllerId)
                  .then(function () {});
+        }
+        function submit() {
+            common.activateController([], controllerId)
+                .then(function () {});
         }
     };
 })();

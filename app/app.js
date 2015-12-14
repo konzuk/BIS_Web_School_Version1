@@ -8,7 +8,8 @@
         'ngRoute',          // routing
         'ngSanitize',       // sanitizes html bindings (ex: sidebar.js)
         'ngCookies',        // Cookie
-        'common'     // common functions, logger, spinner
+        'ui.bootstrap',
+        'common'    // common functions, logger, spinner
     ]);
 
     // Handle routing errors and success events
@@ -27,20 +28,26 @@
                     templateUrl: "app/module/home/home.html",
                     controller: "homeCon",
                     activeTab: 'home',
-                    parent:true,
+                    parent:true
                 }).when("/about", {
                     title: "About",
                     templateUrl: "app/module/about/about.html",
                     controller: "aboutCon",
                     activeTab: 'about',
-                    parent:true,
-                }).when("/about/about", {
-                    title: "About",
-                    templateUrl: "app/module/about/about.html",
-                    controller: "aboutCon",
-                    activeTab: 'about',
-                    parent:false,
-                }).otherwise({
+                    parent:true
+                //}).when("/about/about", {
+                //    title: "About",
+                //    templateUrl: "app/module/about/about.html",
+                //    controller: "aboutCon",
+                //    activeTab: 'about',
+                //    parent:false,
+                }).when("/user", {
+                title: "User",
+                templateUrl: "app/module/user/user.html",
+                controller: "userCon",
+                activeTab: 'user',
+                parent:false
+            }).otherwise({
                     redirectTo: "/home"
                 });
         }

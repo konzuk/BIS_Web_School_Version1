@@ -37,21 +37,41 @@ class Account extends CI_Controller {
 
     public function manage_user()
 	{		
-        $this->load->helper('url');
-        		        
-        $data['page']= 'manage_user';	                    
-        $this->load->view('admin/header_footer/header', $data);     
-      
+         $this->load->helper('url');
+
+        $data['page']= 'manage_user';
+
 
         $this->load->model('Account_model', '', true);
-        $user_data['users'] = $this->Account_model->get_all_users();   
-             
-        $this->load->view('admin/manage_user', $user_data);
-    
-    
-        $this->load->view('admin/header_footer/footer');
+
+        echo json_encode($this->Account_model->get_all_users());
+
+//        $user_data['users'] = $this->Account_model->get_all_users();
+//        $this->load->view('admin/header_footer/header', $data);
+//        $this->load->view('admin/manage_user', $user_data);
+//        $this->load->view('admin/header_footer/footer');
                  
 	}
+
+    public function delete_user()
+    {
+
+        $this->load->model('Account_model', '', true);
+        $this->load->database();
+
+        $json = file_get_contents('php://input');
+        $obj = json_decode($json);
+
+        $query = "Delete from account where AccountId = $obj->AccountId ";
+        if ($this->db->query($query))
+        {
+           echo json_encode(true);
+        }
+        else
+        {
+            echo json_encode(false);
+        }
+    }
 
     public function add_user()
 	{		

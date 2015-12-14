@@ -6,6 +6,6 @@ class App extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('app');
+		$this->load->view('admin');
 	}
 }

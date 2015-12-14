@@ -48,6 +48,7 @@
 <script src="/app/layout/shell.js"></script>
 <script src="/app/module/home/home.js"></script>
 <script src="/app/module/about/about.js"></script>
+<script src="/app/module/user/user.js"></script>
 
 </body>
 </html>

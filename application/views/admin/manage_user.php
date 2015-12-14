@@ -36,17 +36,17 @@
                                                     <tbody>
 
                                                         <?php
-                                                            //if(isset($users)){
-                                                                //foreach($users as $row){
+                                                            if(isset($users)){
+                                                                foreach($users as $row){
                                                          ?>
 
                                                         <tr>
-                                                            <td><?php //echo $row->FirstName;?></td>
-                                                            <td><?php //echo $row->LastName;?></td>
-                                                            <td><?php //echo $row->UserName;?></td>
-                                                            <td><?php //echo $row->Password;?></td>
+                                                            <td><?php echo $row->FirstName;?></td>
+                                                            <td><?php echo $row->LastName;?></td>
+                                                            <td><?php echo $row->AccountNumber;?></td>
+                                                            <td><?php echo $row->Password;?></td>
                                                             <td>Phone</td>
-                                                            <td><?php //echo $row->Email;?></td>
+                                                            <td><?php echo $row->Email;?></td>
 															<td>
 																<a href="#" class="btn btn-warning btn-xs">Edit</a> 
 																<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
@@ -56,24 +56,24 @@
 
                                                         <?php
 
-                                                                //}
-                                                            //}
+                                                                }
+                                                            }
 
                                                         ?>
 
-                                                       
-                                                        <tr>
-                                                            <td>Tiger Nixon</td>
-                                                            <td>System Architect</td>
-                                                            <td>Edinburgh</td>
-                                                            <td>61fdae</td>
-                                                            <td>093425343</td>
-                                                            <td>gryp1@gmail.com</td>
-															<td>
-																<a href="#" class="btn btn-warning btn-xs">Edit</a> 
-																<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-															</td>
-                                                        </tr>
+<!--                                                       -->
+<!--                                                        <tr>-->
+<!--                                                            <td>Tiger Nixon</td>-->
+<!--                                                            <td>System Architect</td>-->
+<!--                                                            <td>Edinburgh</td>-->
+<!--                                                            <td>61fdae</td>-->
+<!--                                                            <td>093425343</td>-->
+<!--                                                            <td>gryp1@gmail.com</td>-->
+<!--															<td>-->
+<!--																<a href="#" class="btn btn-warning btn-xs">Edit</a> -->
+<!--																<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>-->
+<!--															</td>-->
+<!--                                                        </tr>-->
 
                                                         
                                                     </tbody>
