@@ -43,11 +43,11 @@ class Account extends CI_Controller {
         $this->load->view('admin/header_footer/header', $data);     
       
 
-        $this->load->model('Account_model', '');
+        $this->load->model('Account_model', '', true);
         $user_data['users'] = $this->Account_model->get_all_users();   
              
         $this->load->view('admin/manage_user', $user_data);
-        //$this->load->view('admin/manage_user');
+    
     
         $this->load->view('admin/header_footer/footer');
                  
@@ -64,7 +64,12 @@ class Account extends CI_Controller {
         $this->load->view('admin/header_footer/footer');
                  
 	}
+    
 
+    public function get_user(){
+        
+
+    }
 
 
 }
