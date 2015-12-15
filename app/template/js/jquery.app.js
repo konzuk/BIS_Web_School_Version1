@@ -13,6 +13,7 @@
         this.$openLeftBtn = $(".open-left"),
         this.$menuItem = $("#sidebar-menu a")
     };
+
     Sidemenu.prototype.openLeftBar = function() {
       $("#wrapper").toggleClass("enlarged");
       $("#wrapper").addClass("forced");
@@ -40,8 +41,9 @@
         }   
         if(!$(this).hasClass("subdrop")) {
           // hide any open menus and remove all other classes
-          $("ul",$(this).parents("ul:first")).slideUp(350);
-          $("a",$(this).parents("ul:first")).removeClass("subdrop");
+            //$("ul",$(this).parents("ul:first")).slideUp(350);
+            $("ul",$(this).parents("ul:first")).slideUp(350);
+            $("a",$(this).parents("ul:first")).removeClass("subdrop");
           $("#sidebar-menu .pull-right i").removeClass("md-remove").addClass("md-add");
           
           // open our new menu and add the open class
@@ -67,7 +69,7 @@
       });
 
       // LEFT SIDE MAIN NAVIGATION
-      $this.$menuItem.on('click', $this.menuItemClick);
+      //$this.$menuItem.on('click', $this.menuItemClick);
 
       // NAVIGATION HIGHLIGHT & OPEN PARENT
       $("#sidebar-menu ul li.has_sub a.active").parents("li:last").children("a:first").addClass("active").trigger("click");

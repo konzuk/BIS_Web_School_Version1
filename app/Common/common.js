@@ -3,6 +3,8 @@
     var commonModule = angular.module("common", []);
     commonModule.factory("common",
         ["$q", "$rootScope", "$timeout", "config","logger",  common]);
+
+
     commonModule.provider("commonConfig", function () {
         this.config = {
         };

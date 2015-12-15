@@ -4,13 +4,13 @@
 
     var app = angular.module("app");
 
-    var controllerId = "homeCon";
+    var controllerId = "pageCon";
     app.controller(controllerId,
-        ["$scope", "common", home]);
+        ["$scope", "common","type", page]);
 
-    function home($scope, common) {
+    function page($scope, common,type) {
 
-
+        //type can be contact, about
 
         activate();
         function activate() {

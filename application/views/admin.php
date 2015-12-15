@@ -46,7 +46,7 @@
         <!-- LOGO -->
         <div class="topbar-left">
             <div class="text-center">
-                <a href="index.html" class="logo"><i class="md md-terrain"></i> <span>User Admin </span></a>
+                <a href="#/home" class="logo"><i class="md md-terrain"></i> <span>User Admin </span></a>
             </div>
         </div>
         <!-- Button mobile view to collapse sidebar menu -->
@@ -171,54 +171,77 @@
                 </div>
             </div>
             <!--- Divider -->
-            <div id="sidebar-menu">
-                <ul>
-                    <li>
-                        <a href="index.html" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>
-                    </li>
+            <div id="sidebar-menu" >
 
-                    <li>
-                        <a href="#" class="waves-effect"><i class="md md-home"></i><span> Admin Panel </span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="manage_user.html"><i class="fa fa-arrow-circle-right"></i><span>Manage User</span></a></li>
-                            <li><a href="add_user.html"><i class="fa fa-arrow-circle-right"></i><span>Add New User</span></a></li>
-                        </ul>
-                    </li>
-
-                    <li class="has_sub">
-                        <a href="#" class="waves-effect"><i class="md md-palette"></i> <span> Manage Depositor </span> <span class="pull-right"><i class="md md-add"></i></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="all_depositor.html">All Depositor</a></li>
-                            <li><a href="add_depositor.html">Add Depositor</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="has_sub">
-                        <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Manage Lesson </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="grid.html">All Lesson</a></li>
-                            <li><a href="portlets.html">Add Lesson</a></li>
-                            <li><a href="widgets.html">Categories</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="has_sub">
-                        <a href="#" class="waves-effect"><i class="md md-redeem"></i> <span> Posts </span> <span class="pull-right"><i class="md md-add"></i></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="material-icon.html">All Posts</a></li>
-                            <li><a href="ion-icons.html">Categories</a></li>
-                            <li><a href="font-awesome.html">Tag Category</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="has_sub">
-                        <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Pages </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="form-elements.html">All Pages</a></li>
-                            <li><a href="form-validation.html">Add Page</a></li>
+                <ul >
+                    <li ng-repeat="nav in navBarLists">
+                        <a ng-class="{havechild: nav.child.length > 0, active: isActive(nav.activeTab)}" ng-href="{{nav.href}}"
+                           class="waves-effect" sidebar-menu>
+                            <i class="md" ng-class="nav.icon"></i>
+                            <span>{{nav.text}}</span></a>
+                        <ul class="list-unstyled" >
+                            <li ng-repeat="ch in nav.child"><a ng-href="{{ch.href}}"><i class="fa fa-arrow-circle-right"></i><span>{{ch.text}}</span></a></li>
                         </ul>
                     </li>
                 </ul>
+
+<!--                    <li>-->
+<!--                        <a class="waves-effect" sidebar-menu><i class="md md-home"></i><span> Admin Panel </span></a>-->
+<!--                        <ul class="list-unstyled">-->
+<!--                            <li><a href="manage_user.html"><i class="fa fa-arrow-circle-right"></i><span>Manage User</span></a></li>-->
+<!--                            <li><a href="add_user.html"><i class="fa fa-arrow-circle-right"></i><span>Add New User</span></a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+
+<!---->
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        <a href="index.html" class="waves-effect active"><i class="md md-home"></i><span> Dashboard </span></a>-->
+<!--                    </li>-->
+<!---->
+<!--                    <li>-->
+<!--                        <a href="#" class="waves-effect"><i class="md md-home"></i><span> Admin Panel </span></a>-->
+<!--                        <ul class="list-unstyled">-->
+<!--                            <li><a href="manage_user.html"><i class="fa fa-arrow-circle-right"></i><span>Manage User</span></a></li>-->
+<!--                            <li><a href="add_user.html"><i class="fa fa-arrow-circle-right"></i><span>Add New User</span></a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                 </ul>-->
+<!---->
+<!--                    <li class="has_sub">-->
+<!--                        <a href="#" class="waves-effect"><i class="md md-palette"></i> <span> Manage Depositor </span> <span class="pull-right"><i class="md md-add"></i></span></a>-->
+<!--                        <ul class="list-unstyled">-->
+<!--                            <li><a href="all_depositor.html">All Depositor</a></li>-->
+<!--                            <li><a href="add_depositor.html">Add Depositor</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!---->
+<!--                    <li class="has_sub">-->
+<!--                        <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Manage Lesson </span><span class="pull-right"><i class="md md-add"></i></span></a>-->
+<!--                        <ul class="list-unstyled">-->
+<!--                            <li><a href="grid.html">All Lesson</a></li>-->
+<!--                            <li><a href="portlets.html">Add Lesson</a></li>-->
+<!--                            <li><a href="widgets.html">Categories</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!---->
+<!--                    <li class="has_sub">-->
+<!--                        <a href="#" class="waves-effect"><i class="md md-redeem"></i> <span> Posts </span> <span class="pull-right"><i class="md md-add"></i></span></a>-->
+<!--                        <ul class="list-unstyled">-->
+<!--                            <li><a href="material-icon.html">All Posts</a></li>-->
+<!--                            <li><a href="ion-icons.html">Categories</a></li>-->
+<!--                            <li><a href="font-awesome.html">Tag Category</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!---->
+<!--                    <li class="has_sub">-->
+<!--                        <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Pages </span><span class="pull-right"><i class="md md-add"></i></span></a>-->
+<!--                        <ul class="list-unstyled">-->
+<!--                            <li><a href="form-elements.html">All Pages</a></li>-->
+<!--                            <li><a href="form-validation.html">Add Page</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                </ul>-->
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
@@ -387,13 +410,22 @@
 
 <!-- app Services -->
 <script src="/app/data.js"></script>
+<script src="/app/directive.js"></script>
 <script src="/app/routemediator.js"></script>
 
 <!-- Module -->
 
 <script src="/app/module/home/home.js"></script>
-<script src="/app/module/about/about.js"></script>
-<script src="/app/module/user/user.js"></script>
+<script src="/app/module/account/depositor/depositor.js"></script>
+<script src="/app/module/account/user/user.js"></script>
+<script src="/app/module/account/student/student.js"></script>
+<script src="/app/module/deposit/deposit.js"></script>
+<script src="/app/module/deposit/profit.js"></script>
+<script src="/app/module/page/page.js"></script>
+<script src="/app/module/post/category/category.js"></script>
+<script src="/app/module/post/post/post.js"></script>
+
+
 
 
 

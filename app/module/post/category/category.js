@@ -4,13 +4,13 @@
 
     var app = angular.module("app");
 
-    var controllerId = "homeCon";
+    var controllerId = "categoryCon";
     app.controller(controllerId,
-        ["$scope", "common", home]);
+        ["$scope", "common","type", category]);
 
-    function home($scope, common) {
+    function category($scope, common,type) {
 
-
+        //type can be event, lesson, media, news
 
         activate();
         function activate() {

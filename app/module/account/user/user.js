@@ -4,11 +4,11 @@
 
     var app = angular.module("app");
 
-    var controllerId = "homeCon";
+    var controllerId = "userCon";
     app.controller(controllerId,
-        ["$scope", "common", home]);
+        ["$scope", "common", user]);
 
-    function home($scope, common) {
+    function user($scope, common) {
 
 
 

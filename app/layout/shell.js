@@ -8,32 +8,7 @@
 
 
 
-    function getRoutes($route){
-        var routes = [];
-        angular.forEach($route.routes, function(route) {
-            if (route.activeTab && route.parent) routes.push({
-                href: route.originalPath,
-                text: route.title,
-                activeTab: route.activeTab,
-                child: [],
-            });
-        });
-        angular.forEach($route.routes, function(route){
-                if(route.activeTab && !route.parent)
-                {
-                    var parent = routes.filter(function(item) { return item.activeTab === route.activeTab; })[0];
-                    if (parent)
-                    {
-                        parent.child.push({
-                            href: route.originalPath,
-                            text: route.title,
-                            activeTab: route.activeTab,
-                        });
-                    }
-                }
-        });
-        return routes;
-    };
+
 
     function shell($rootScope, $scope,$route, common, config) {
 

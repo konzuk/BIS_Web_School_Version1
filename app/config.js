@@ -9,11 +9,6 @@
         gettingDataEvent: 'data.getting'
     };
 
-    var routes = {
-        controllerActivateEvent: 'controller.activateSuccess',
-        routeChangeEvent: 'route.changing',
-        gettingDataEvent: 'data.getting'
-    };
 
     var config = {
         appErrorPrefix: '[BIS Error] ',

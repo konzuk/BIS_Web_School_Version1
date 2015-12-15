@@ -34,12 +34,12 @@
                 return deferred.promise;
             };
 
-            obj.get = function (controller,method,id) {
+            obj.get = function (controller,method,filter) {
 
                 var deferred = $q.defer();
                 //var test = cache.get(method);
                 //if (test === undefined) {
-                    $http.get(serverbase + controller + '/' + method+'/' + id).then(function (results) {
+                    $http.get(serverbase + controller + '/' + method+'/' + filter).then(function (results) {
                         //cache.put(method, results === undefined ? null : results);
                         deferred.resolve(results);
                     });
