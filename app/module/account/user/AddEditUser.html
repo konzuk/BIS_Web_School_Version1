@@ -1,0 +1,73 @@
+
+    <div class="modal-header">
+        <h3 class="modal-title">Create New User</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form">
+            <form class="cmxform form-horizontal tasi-form">
+                <div class="form-group">
+                    <label for="avatar" class="col-sm-3 control-label">Avatar</label>
+                    <div class="col-sm-9">
+                        <img class="panel" src="images/avatar-1.jpg" />
+                        <input type="file" name="userfile"  />
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="firstname" class="control-label col-lg-3">Firstname *</label>
+                    <div class="col-lg-9">
+                        <input class=" form-control"
+                               id="firstname"
+                               placeholder="First Name"
+                               type="text"
+                               ng-model="model.FirstName"
+                               required>
+
+                        <!--<span ng-show="myForm.email.$dirty && myForm.email.$invalid">-->
+                        <!--<label class="error" for="firstname" ng-show="myForm.email.$error.required">Email is required.</label>-->
+                        <!--<label class="error" for="firstname" ng-show="myForm.email.$error.email">Invalid email address.</label>-->
+                        <!--</span>-->
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="lastname" class="control-label col-lg-3">Lastname  *</label>
+                    <div class="col-lg-9">
+                        <input class=" form-control"
+                               id="lastname"
+                               placeholder="Last Name"
+                               type="text"
+                               ng-model="model.LastName"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="username" class="control-label col-lg-3">Username *</label>
+                    <div class="col-lg-9">
+
+                        <input class=" form-control"
+                               id="username"
+                               placeholder="Username"
+                               type="text"
+                               ng-model="model.AccountNumber"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="password" class="control-label col-lg-3">Password *</label>
+                    <div class="col-lg-9">
+
+                        <input class=" form-control"
+                               id="password"
+                               placeholder="password"
+                               type="text"
+                               ng-model="model.Password"
+                               required>
+                    </div>
+                </div>
+            </form>
+        </div> <!-- .form -->
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>

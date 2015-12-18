@@ -26,7 +26,10 @@
 
         <!-- sweet alerts -->
         <link href="assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
-
+		
+		<!-- DataTables -->
+        <link href="assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+		
         <!-- Custom Files -->
         <link href="css/helper.css" rel="stylesheet" type="text/css" />
         <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -155,7 +158,6 @@
             </div>
             <!-- Top Bar End -->
 
-
             <!-- ========== Left Sidebar Start ========== -->
 
             <div class="left side-menu">
@@ -197,33 +199,46 @@
                                 <a href="#" class="waves-effect"><i class="md md-palette"></i> <span> Manage Depositor </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="all_depositor.html">All Depositor</a></li>
-                                    <li><a href="add_depositor.html">Add Depositor</a></li>
+									<li><a href="add_deposit_money.html">Create Account</a></li>
+                                    <!--
+									<li><a href="add_depositor.html">Add Depositor</a></li>
+									<li><a href="deposit_money.html">Deposit Money</a></li>
+									-->
                                 </ul>
                             </li>
-
+							
+							<li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Manage Student </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="all_student.html">All Students</a></li>
+									<li><a href="student_profile.html">Create Student</a></li>
+                                </ul>
+                            </li>
+							
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Manage Lesson </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="grid.html">All Lesson</a></li>
-                                    <li><a href="portlets.html">Add Lesson</a></li>
-                                    <li><a href="widgets.html">Categories</a></li>
+                                    <li><a href="all_lesson.html">All Lesson</a></li>
+                                    <li><a href="add_lesson_post.html">Add Lesson</a></li>
+                                    <li><a href="add_category_lesson.html">Categories</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-redeem"></i> <span> Posts </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="material-icon.html">All Posts</a></li>
-                                    <li><a href="ion-icons.html">Categories</a></li>
-                                    <li><a href="font-awesome.html">Tag Category</a></li>
+                                    <li><a href="all_posts.html">All Posts</a></li>
+									<li><a href="add_new_post.html">Add New Post</a></li>
+                                    <li><a href="add_category_post.html">Categories</a></li>
+                                    <li><a href="add_tag.html">Tags</a></li>
                                 </ul>
                             </li>
                             
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Pages </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="form-elements.html">All Pages</a></li>
-                                    <li><a href="form-validation.html">Add Page</a></li>
+                                    <li><a href="all_pages.html">All Pages</a></li>
+                                    <li><a href="add_new_page.html">Add Page</a></li>
                                 </ul>
                             </li> 
                         </ul>
@@ -233,8 +248,8 @@
                 </div>
             </div>
             <!-- Left Sidebar End --> 
-
-
+			
+			
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->                      
@@ -243,17 +258,7 @@
                 <div class="content">
                     <div class="container">
 
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Manage Depositor</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Sean Vit</a></li>
-                                    <li><a href="#">Depositor</a></li>
-                                    <li class="active">Manage Depositor</li>
-                                </ol>
-                            </div>
-                        </div>
+                   
 				<!-- ========== table Depositor ========== -->
                         <div class="row">
                             <div class="col-lg-12">
@@ -263,7 +268,7 @@
                                     </div> 
                                     <div class="panel-body table-rep-plugin"> 
                                         <div class="table-responsive" data-pattern="priority-columns">
-                                            <table id="tech-companies-1" class="table table-small-font table-bordered table-striped">
+                                            <table id="datatable" class="table table-small-font table-bordered table-striped">
                                                 <thead>
                                                     <tr>
                                                         <th>Code No.</th>
@@ -273,6 +278,7 @@
                                                         <th data-priority="3">Duration (Month)</th>
                                                         <th data-priority="3">Income ($)</th>
                                                         <th data-priority="6">Total Balance ($)</th>
+														<th data-priority="6">Option</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -284,7 +290,11 @@
                                                         <td>12%</td>
                                                         <td>2</td>
                                                         <td>2400</td>
-                                                        <td>12400</td>  
+                                                        <td>12400</td> 
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>      
                                                     <tr>
 														<td>00002</td>
@@ -294,6 +304,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>     
 													<tr>
 														<td>00001</td>
@@ -303,6 +317,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>
 													<tr>
 														<td>00001</td>
@@ -312,6 +330,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>  
 													<tr>
 														<td>00001</td>
@@ -321,6 +343,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>  
 													<tr>
 														<td>00001</td>
@@ -330,6 +356,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>
 													<tr>
 														<td>00001</td>
@@ -339,6 +369,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>  
 													<tr>
 														<td>00001</td>
@@ -347,7 +381,11 @@
                                                         <td>12%</td>
                                                         <td>2</td>
                                                         <td>2400</td>
-                                                        <td>12400</td>  
+                                                        <td>12400</td> 
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>	
 													<tr>
 														<td>00001</td>
@@ -357,6 +395,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>
 													<tr>
 														<td>00001</td>
@@ -366,6 +408,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>  
 													<tr>
 														<td>00001</td>
@@ -375,6 +421,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>	
 													<tr>
 														<td>00001</td>
@@ -384,6 +434,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>
 													<tr>
 														<td>00001</td>
@@ -393,6 +447,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>  
 													<tr>
 														<td>00001</td>
@@ -402,6 +460,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>	
 													<tr>
 														<td>00001</td>
@@ -411,6 +473,10 @@
                                                         <td>2</td>
                                                         <td>2400</td>
                                                         <td>12400</td>  
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>
 													<tr>
 														<td>00001</td>
@@ -419,89 +485,12 @@
                                                         <td>12%</td>
                                                         <td>2</td>
                                                         <td>2400</td>
-                                                        <td>12400</td>  
+                                                        <td>12400</td> 
+														<td>
+															<a href="add_depositor.html" class="btn btn-warning btn-xs">Edit</a> 
+															<a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
+														</td>
                                                     </tr>  
-													<tr>
-														<td>00001</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>
-													<tr>
-														<td>00001</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>
-													<tr>
-														<td>00001</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>  
-													<tr>
-														<td>00001</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>
-													<tr>
-														<td>00001</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>
-													<tr>
-														<td>00091</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>  
-													<tr>
-														<td>000100</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>
-													<tr>
-														<td>000101</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>
-													<tr>
-														<td>000102</td>
-                                                        <td>12/12/2015</td>
-                                                        <td>10000</td>
-                                                        <td>12%</td>
-                                                        <td>2</td>
-                                                        <td>2400</td>
-                                                        <td>12400</td>  
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>  
@@ -524,119 +513,7 @@
             <!-- ============================================================== -->
             <!-- End Right content here -->
             <!-- ============================================================== -->
-
-
-            <!-- Right Sidebar -->
-            <div class="side-bar right-bar nicescroll">
-                <h4 class="text-center">Chat</h4>
-                <div class="contact-list nicescroll">
-                    <ul class="list-group contacts-list">
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-1.jpg" alt="">
-                                </div>
-                                <span class="name">Chadengle</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-2.jpg" alt="">
-                                </div>
-                                <span class="name">Tomaslau</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-3.jpg" alt="">
-                                </div>
-                                <span class="name">Stillnotdavid</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-4.jpg" alt="">
-                                </div>
-                                <span class="name">Kurafire</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-5.jpg" alt="">
-                                </div>
-                                <span class="name">Shahedk</span>
-                                <i class="fa fa-circle away"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-6.jpg" alt="">
-                                </div>
-                                <span class="name">Adhamdannaway</span>
-                                <i class="fa fa-circle away"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-7.jpg" alt="">
-                                </div>
-                                <span class="name">Ok</span>
-                                <i class="fa fa-circle away"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-8.jpg" alt="">
-                                </div>
-                                <span class="name">Arashasghari</span>
-                                <i class="fa fa-circle offline"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-9.jpg" alt="">
-                                </div>
-                                <span class="name">Joshaustin</span>
-                                <i class="fa fa-circle offline"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-10.jpg" alt="">
-                                </div>
-                                <span class="name">Sortino</span>
-                                <i class="fa fa-circle offline"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                    </ul>  
-                </div>
-            </div>
-            <!-- /Right-bar -->
-
-
+			
         </div>
         <!-- END wrapper -->
     
@@ -663,11 +540,11 @@
         <script src="assets/datatables/jquery.dataTables.min.js"></script>
         <script src="assets/datatables/dataTables.bootstrap.js"></script>
 
-	
-        <script type="text/javascript">
-        /*    $(document).ready(function() {
+		
+		<script type="text/javascript">
+           $(document).ready(function() {
                 $('#datatable').dataTable();
-            } );*/
+            } );
         </script>
 
 	</body>

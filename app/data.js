@@ -16,9 +16,7 @@
             //var cache = $cacheFactory('cache');
             var obj = {};
 
-            obj.gets = function (q) {
 
-            };
 
             obj.gets = function (controller,method) {
                 var deferred = $q.defer();
@@ -47,7 +45,6 @@
                 //    deferred.resolve(test);
                 //}
                 return deferred.promise;
-
             };
            
             obj.post = function (controller, method, object) {

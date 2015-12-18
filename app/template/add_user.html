@@ -155,7 +155,6 @@
             </div>
             <!-- Top Bar End -->
 
-
             <!-- ========== Left Sidebar Start ========== -->
 
             <div class="left side-menu">
@@ -197,33 +196,46 @@
                                 <a href="#" class="waves-effect"><i class="md md-palette"></i> <span> Manage Depositor </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="all_depositor.html">All Depositor</a></li>
-                                    <li><a href="add_depositor.html">Add Depositor</a></li>
+									<li><a href="add_deposit_money.html">Create Account</a></li>
+                                    <!--
+									<li><a href="add_depositor.html">Add Depositor</a></li>
+									<li><a href="deposit_money.html">Deposit Money</a></li>
+									-->
                                 </ul>
                             </li>
-
+							
+							<li class="has_sub">
+                                <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Manage Student </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="all_student.html">All Students</a></li>
+									<li><a href="student_profile.html">Create Student</a></li>
+                                </ul>
+                            </li>
+							
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-invert-colors-on"></i><span> Manage Lesson </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="grid.html">All Lesson</a></li>
-                                    <li><a href="portlets.html">Add Lesson</a></li>
-                                    <li><a href="widgets.html">Categories</a></li>
+                                    <li><a href="all_lesson.html">All Lesson</a></li>
+                                    <li><a href="add_lesson_post.html">Add Lesson</a></li>
+                                    <li><a href="add_category_lesson.html">Categories</a></li>
                                 </ul>
                             </li>
 
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-redeem"></i> <span> Posts </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="material-icon.html">All Posts</a></li>
-                                    <li><a href="ion-icons.html">Categories</a></li>
-                                    <li><a href="font-awesome.html">Tag Category</a></li>
+                                    <li><a href="all_posts.html">All Posts</a></li>
+									<li><a href="add_new_post.html">Add New Post</a></li>
+                                    <li><a href="add_category_post.html">Categories</a></li>
+                                    <li><a href="add_tag.html">Tags</a></li>
                                 </ul>
                             </li>
                             
                             <li class="has_sub">
                                 <a href="#" class="waves-effect"><i class="md md-now-widgets"></i><span> Pages </span><span class="pull-right"><i class="md md-add"></i></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="form-elements.html">All Pages</a></li>
-                                    <li><a href="form-validation.html">Add Page</a></li>
+                                    <li><a href="all_pages.html">All Pages</a></li>
+                                    <li><a href="add_new_page.html">Add Page</a></li>
                                 </ul>
                             </li> 
                         </ul>
@@ -242,76 +254,76 @@
                 <div class="content">
                     <div class="container">
 
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Create New User</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Create User</a></li>
-                                    <li><a href="#">User</a></li>
-                                    <li class="active">Create New User</li>
-                                </ol>
-                            </div>
-                        </div>
-
                         <!-- Form-validation -->
                         <div class="row">
-                        
+							
                             <div class="col-sm-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3 class="panel-title">Create New User</h3></div>
                                     <div class="panel-body">
-                                        <div class=" form">
+                                        <div class="form">
                                             <form class="cmxform form-horizontal tasi-form" id="signupForm" method="get" action="#" novalidate="novalidate">
-                                                <div class="form-group ">
+                                                <div class="form-group">
+													<label for="avatar" class="col-sm-2 control-label">Avatar</label>
+													<div class="col-sm-10">
+														<img class="panel" src="images/avatar-1.jpg" />
+														<input type="file" name="userfile" /> 
+													</div>
+												</div>
+												<div class="form-group ">
                                                     <label for="firstname" class="control-label col-lg-2">Firstname *</label>
                                                     <div class="col-lg-10">
-                                                        <input class=" form-control" id="firstname" name="firstname" type="text">
+                                                        <input class=" form-control" id="firstname" name="firstname" type="text" placeholder="First Name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label for="lastname" class="control-label col-lg-2">Lastname  *</label>
                                                     <div class="col-lg-10">
-                                                        <input class=" form-control" id="lastname" name="lastname" type="text">
+                                                        <input class=" form-control" id="lastname" name="lastname" type="text" placeholder="Last Name">
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label for="username" class="control-label col-lg-2">Username *</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control " id="username" name="username" type="text">
+                                                        <input class="form-control " id="username" name="username" type="text" placeholder="Username">
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label for="password" class="control-label col-lg-2">Password *</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control " id="password" name="password" type="password">
+                                                        <input class="form-control " id="password" name="password" type="password" placeholder="12345">
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label for="confirm_password" class="control-label col-lg-2">Confirm Password *</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control " id="confirm_password" name="confirm_password" type="password">
+                                                        <input class="form-control " id="confirm_password" name="confirm_password" type="password" placeholder="12345">
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label for="email" class="control-label col-lg-2">Email *</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control " id="email" name="email" type="email">
+                                                        <input class="form-control " id="email" name="email" type="email" placeholder="email@gmail.com">
                                                     </div>
                                                 </div>
 												<div class="form-group ">
                                                     <label for="email" class="control-label col-lg-2">Phone Number *</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control " id="email" name="email" type="email">
+                                                        <input class="form-control " id="email" name="phone" type="text" placeholder="012 990 300">
                                                     </div>
                                                 </div>
-                                                <div class="form-group ">
-													<label for="agree" class="control-label col-lg-2 col-sm-3">Agree to Our Policy *</label>
+												<div class="form-group">
+													<label class="control-label col-lg-2">Permission User *</label>
 													<div class="col-lg-10 col-sm-9">
-														<input type="checkbox" style="width: 16px" class="checkbox form-control" id="agree" name="agree">
+														<select class="Permission User" data-placeholder="Permission User">
+														  <option value="select option">select option</option>
+														  <option value="Admin">Administrator</option>
+														  <option value="Author">Creator</option>
+														  <option value="Editor">Editor</option>
+														</select>
 													</div>
 												</div>
-                                            
+                                                
                                                 <div class="form-group">
                                                     <div class="col-lg-offset-2 col-lg-10">
                                                         <button class="btn btn-success waves-effect waves-light" type="submit">Save</button>
@@ -327,8 +339,6 @@
 
                         </div> <!-- End row -->
 
-
-
             </div> <!-- container -->
                                
                 </div> <!-- content -->
@@ -342,115 +352,8 @@
             <!-- End Right content here -->
             <!-- ============================================================== -->
 
-
             <!-- Right Sidebar -->
-            <div class="side-bar right-bar nicescroll">
-                <h4 class="text-center">Chat</h4>
-                <div class="contact-list nicescroll">
-                    <ul class="list-group contacts-list">
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-1.jpg" alt="">
-                                </div>
-                                <span class="name">Chadengle</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-2.jpg" alt="">
-                                </div>
-                                <span class="name">Tomaslau</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-3.jpg" alt="">
-                                </div>
-                                <span class="name">Stillnotdavid</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-4.jpg" alt="">
-                                </div>
-                                <span class="name">Kurafire</span>
-                                <i class="fa fa-circle online"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-5.jpg" alt="">
-                                </div>
-                                <span class="name">Shahedk</span>
-                                <i class="fa fa-circle away"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-6.jpg" alt="">
-                                </div>
-                                <span class="name">Adhamdannaway</span>
-                                <i class="fa fa-circle away"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-7.jpg" alt="">
-                                </div>
-                                <span class="name">Ok</span>
-                                <i class="fa fa-circle away"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-8.jpg" alt="">
-                                </div>
-                                <span class="name">Arashasghari</span>
-                                <i class="fa fa-circle offline"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-9.jpg" alt="">
-                                </div>
-                                <span class="name">Joshaustin</span>
-                                <i class="fa fa-circle offline"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#">
-                                <div class="avatar">
-                                    <img src="images/users/avatar-10.jpg" alt="">
-                                </div>
-                                <span class="name">Sortino</span>
-                                <i class="fa fa-circle offline"></i>
-                            </a>
-                            <span class="clearfix"></span>
-                        </li>
-                    </ul>  
-                </div>
-            </div>
+
             <!-- /Right-bar -->
 
 

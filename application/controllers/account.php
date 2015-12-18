@@ -23,6 +23,9 @@ class Account extends CI_Controller
 
     function initialize_account()
     {
+
+        $this->load->model('Account_model', '');
+
         $result = new Account_model();
 
         echo json_encode($result);
@@ -176,9 +179,23 @@ class Account extends CI_Controller
             return false;
         }
 
+
+
+
         $account->AccountType = $account_type;
 
-        $result = $this->Account_model->add_account($account);
+        $accounttest = new Account_model();
+
+        $accounttest->AccountId = $account->AccountId;
+        $accounttest->FirstName = $account->FirstName;
+        $accounttest->LastName = $account->LastName;
+        $accounttest->AccountNumber = $account->AccountNumber;
+        $accounttest->Password = $account->Password;
+        $accounttest->AccountType = $account->AccountType;
+
+
+
+        $result = $this->Account_model->add_account($accounttest);
 
         echo json_encode($result);
     }

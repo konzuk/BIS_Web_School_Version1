@@ -2,13 +2,15 @@
     'use strict';
 
     var app = angular.module('app', [
-        
+        'datatables', 'datatables.bootstrap',
         // Angular modules 
         'ngAnimate',        // animations
         'ngRoute',          // routing
+        'ngMessages',       // validation
         'ngSanitize',       // sanitizes html bindings (ex: sidebar.js)
         'ngCookies',        // Cookie
         'ui.bootstrap',
+
         'common'    // common functions, logger, spinner
     ]);
 
