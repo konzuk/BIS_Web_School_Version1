@@ -50,7 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '530755';
+//$db['default']['password'] = '530755';
+$db['default']['password'] = '123456';
 $db['default']['database'] = 'bisloandatabase';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
