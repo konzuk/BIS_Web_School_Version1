@@ -19,25 +19,26 @@ class Model_base extends CI_Model
     static function map_objects($object, $data, $full_join = false)
     {
         if(!isset($object)) return $data;
+        else if(!isset($data)) return $object;
 
         foreach($data as $key=>$val)
         {
-            if($full_join || property_exists($object, $key)) $object->$key = $data->$key;
+            if($full_join || property_exists($object, $key)) $object->$key = $val;
         }
 
         return $object;
     }
 
-    static function map_object_array ($object, $data = array(), $full_join = false)
-    {
-        if(!isset($object)) return $data;
-
-        foreach($data as $key=>$val)
-        {
-            if($full_join || property_exists($object, $key)) $object->$key = $data[$key];
-        }
-
-        return $object;
-    }
+//    static function map_object_array ($object, $data = array(), $full_join = false)
+//    {
+//        if(!isset($object)) return $data;
+//
+//        foreach($data as $key=>$val)
+//        {
+//            if($full_join || property_exists($object, $key)) $object->$key = $data[$key];
+//        }
+//
+//        return $object;
+//    }
 
 }
