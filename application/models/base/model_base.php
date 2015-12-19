@@ -15,9 +15,29 @@ class Model_base extends CI_Model
         parent::__construct();
     }
 
-    //Paging
-    public $CurrentPage = 1;
-    public $RecordPerPage = 20;
-    public $CurrentRecord = 0;
-    public $RecordCounts = 0;
+
+    static function map_objects($object, $data, $full_join = false)
+    {
+        if(!isset($object)) return $data;
+
+        foreach($data as $key=>$val)
+        {
+            if($full_join || property_exists($object, $key)) $object->$key = $data->$key;
+        }
+
+        return $object;
+    }
+
+    static function map_object_array ($object, $data = array(), $full_join = false)
+    {
+        if(!isset($object)) return $data;
+
+        foreach($data as $key=>$val)
+        {
+            if($full_join || property_exists($object, $key)) $object->$key = $data[$key];
+        }
+
+        return $object;
+    }
+
 }

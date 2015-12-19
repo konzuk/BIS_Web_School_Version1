@@ -2,7 +2,6 @@
 
 
 class Account_model extends Model_base
-
 {
 
     function __construct()
@@ -91,12 +90,9 @@ class Account_model extends Model_base
 
     function add_account(Account_model $account)
     {
-        //if($this->is_exist_account_number($account)) return false;
+        if($this->is_exist_account_number($account)) return false;
 
         $result=$this->db->insert('account', $account);
-
-
-        echo json_encode("success");
 
         return $result;
     }

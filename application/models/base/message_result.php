@@ -21,6 +21,10 @@ class Message_result extends Model_Base
     }
 
     //Paging
+    public $CurrentPage = 1;
+    public $RecordPerPage = 20;
+    public $CurrentRecord = 0;
+    public $RecordCounts = 0;
     public $PageCounts = 0;
 
 

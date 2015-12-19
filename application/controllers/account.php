@@ -170,32 +170,28 @@ class Account extends CI_Controller
 
         $this->load->model('Account_model', '', true);
 
-        $account = $this->get_json_object();
+        $data = $this->get_json_object();
 
-        if(!isset($account))
+        if(!isset($data))
         {
             //echo json_encode('Invalid account');
             echo json_encode(false);
             return false;
         }
 
+//        $data['AccountNumber']= 'User';
+//        $data['Password'] = md5('P@ssw0rd123456');
+//        $data['LastName'] = 'User';
+//        $data['FirstName'] = 'User';
 
-
-
+        $account = new Account_model();
         $account->AccountType = $account_type;
 
-        $accounttest = new Account_model();
-
-        $accounttest->AccountId = $account->AccountId;
-        $accounttest->FirstName = $account->FirstName;
-        $accounttest->LastName = $account->LastName;
-        $accounttest->AccountNumber = $account->AccountNumber;
-        $accounttest->Password = $account->Password;
-        $accounttest->AccountType = $account->AccountType;
+        Model_base::map_objects($account, $data);
+        //Model_base::map_object_array($account, $data);
 
 
-
-        $result = $this->Account_model->add_account($accounttest);
+        $result = $this->Account_model->add_account($account);
 
         echo json_encode($result);
     }
