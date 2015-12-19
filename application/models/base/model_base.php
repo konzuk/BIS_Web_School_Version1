@@ -29,16 +29,9 @@ class Model_base extends CI_Model
         return $object;
     }
 
-//    static function map_object_array ($object, $data = array(), $full_join = false)
-//    {
-//        if(!isset($object)) return $data;
-//
-//        foreach($data as $key=>$val)
-//        {
-//            if($full_join || property_exists($object, $key)) $object->$key = $data[$key];
-//        }
-//
-//        return $object;
-//    }
+    static function encrypt_password($password)
+    {
+        return md5('P@ssw0rd'.$password);
+    }
 
 }
