@@ -149,21 +149,6 @@ class Account extends CI_Controller
 
     }
 
-    function delete_account($account_type, $account_id)
-    {
-        if(!$this->is_valid_account_type($account_type)) return false;
-
-        $this->load->model('Account_model', '', true);
-
-        $account = new Account_model();
-        $account->AccountType = $account_type;
-        $account->AccountId = $account_id;
-
-        $result = $this->Account_model->delete_account($account);
-
-        echo json_encode($account_type, $result);
-    }
-
     function add_account($account_type)
     {
         if(!$this->is_valid_account_type($account_type)) return false;
@@ -197,18 +182,40 @@ class Account extends CI_Controller
 
         $this->load->model('Account_model', '', true);
 
-        $account = $this->get_json_object();
+        $data = $this->get_json_object();
 
-        if(!isset($account))
+        if(!isset($data))
         {
             //echo json_encode('Invalid account');
             echo json_encode(false);
             return false;
         }
 
+        $account = new Account_model();
+
+        Model_base::map_objects($account, $data);
+
+        $account->AccountType = $account_type;
+        $account->Password = Model_base::encrypt_password($account->Password);
+
         $result = $this->Account_model->udpate_account($account);
 
         echo json_encode($result);
+    }
+
+    function delete_account($account_type, $account_id)
+    {
+        if(!$this->is_valid_account_type($account_type)) return false;
+
+        $this->load->model('Account_model', '', true);
+
+        $account = new Account_model();
+        $account->AccountType = $account_type;
+        $account->AccountId = $account_id;
+
+        $result = $this->Account_model->delete_account($account);
+
+        echo json_encode($account_type, $result);
     }
 
     function activate_account($account_type, $account_id, $is_active=true)
