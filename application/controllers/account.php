@@ -257,15 +257,23 @@ class Account extends My_controller
         echo json_encode($result);
     }
 
-    function delete_account($account_type, $account_id)
+    function delete_account()
     {
-        if(!$this->is_valid_account_type($account_type)) return false;
+        $data = $this->get_json_object();
+
+        if(!isset($data))
+        {
+            //echo json_encode('Invalid account');
+            echo json_encode(false);
+            return false;
+        }
+
+        if(!$this->is_valid_account_type($data->AccountType)) return false;
 
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
-        $account->AccountType = $account_type;
-        $account->AccountId = $account_id;
+        $account->AccountId = $data->AccountId;
 
         $result = $this->Account_model->delete_account($account);
 
