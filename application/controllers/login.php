@@ -13,7 +13,11 @@ class Login extends CI_Controller
 	public function index(Account_model $account=null)
     {
         $user = $this->session->userdata('user');
-        if(isset($user)) $this->session->unset_userdata('user');
+        if(isset($user))
+        {
+            //$this->session->unset_userdata('user');
+            $this->session->sess_destroy();
+        }
 
         $this->load->view('admin/login', $account);
     }

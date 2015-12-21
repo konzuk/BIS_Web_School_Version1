@@ -13,8 +13,10 @@ class Account extends My_controller
      *  Manage User
      * */
 
-    private function initialize_account($account_type)
+    function initialize_account($account_type)
     {
+        if(!$this->is_valid_account_type($account_type)) return false;
+
         $this->load->model('Account_model');
 
         $result = new Account_model();
