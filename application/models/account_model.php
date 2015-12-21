@@ -39,9 +39,21 @@ class Account_model extends Model_base
         return $result;
     }
 
+    function get_all_accounts(Account_model $account)
+    {
+        $this->db->where('AccountType',$account->AccountType);
+
+        $query = $this->db->get('account');
+
+        if(!$query || $query->num_rows()== 0) return false;
+
+        $result= $query->result('Account_model');
+
+        return $result;
+    }
+
     function get_account(Account_model $account)
     {
-        $this->db->where('AccountType', $account->AccountType);
         $this->db->where('AccountId', $account->AccountId);
 
         $result =$this->db->get('account');
@@ -65,7 +77,6 @@ class Account_model extends Model_base
 
     function is_exist_account(Account_model $account)
     {
-        $this->db->where('AccountType', $account->AccountType);
         $this->db->where('AccountId', $account->AccountId);
 
         $result =$this->db->get('account');
@@ -101,7 +112,6 @@ class Account_model extends Model_base
     {
         if($this->is_exist_account_number($account)) return false;
 
-        $this->db->where('AccountType', $account->AccountType);
         $this->db->where('AccountId', $account->AccountId);
 
         $result = $this->db->update('account', $account);
@@ -111,13 +121,9 @@ class Account_model extends Model_base
 
     function delete_account(Account_model $account)
     {
-        $this->db->where('AccountType', $account->AccountType);
         $this->db->where('AccountId', $account->AccountId);
 
-
-
         $result=$this->db->delete('account');
-
 
         return $result;
     }
@@ -126,12 +132,45 @@ class Account_model extends Model_base
     {
         if(!$this->is_exist_account($account)) return false;
 
-        $this->db->where('AccountType', $account->AccountType);
         $this->db->where('AccountId', $account->AccountId);
 
         $result = $this->db->update('account', array('IsActive'=>$account->IsActive));
 
         return $result;
+    }
+
+    function reset_password(Account_model $account)
+    {
+        if(!$this->is_exist_account($account)) return false;
+
+        $this->db->where('AccountId', $account->AccountId);
+
+        $result = $this->db->update('account', array('Password'=> Model_base::encrypt_password('123456')));
+
+        return $result;
+    }
+
+    function change_password(Account_model $account)
+    {
+        if(!$this->is_exist_account($account)) return false;
+
+        $this->db->where('AccountId', $account->AccountId);
+
+        $result = $this->db->update('account', array('Password'=> Model_base::encrypt_password($account->Password)));
+
+        return $result;
+    }
+
+    function login(Account_model $account)
+    {
+        $this->db->where('AccountNumber', $account->AccountNumber);
+        $this->db->where('Password', Model_base::encrypt_password($account->Password));
+
+        $result = $this->db->get('account');
+
+        if($result->num_rows()== 0) return false;
+
+        return $result->first_row('Account_model');
     }
 
 

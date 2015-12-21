@@ -45,29 +45,30 @@
             <div class="panel panel-color panel-primary panel-pages">
                 <div class="panel-heading bg-img"> 
                     <div class="bg-overlay"></div>
-                    <h3 class="text-center m-t-10 text-white"> Sign In to <strong>Moltran</strong> </h3>
+<!--                    <h3 class="text-center m-t-10 text-white"> Sign In to <strong>Moltran</strong> </h3>-->
+                    <h3 class="text-center m-t-10 text-white"> Login Form </h3>
                 </div> 
 
 
                 <div class="panel-body">
-                <form class="form-horizontal m-t-20" action="index.html">
+                <form class="form-horizontal m-t-20" action="<?php echo base_url();?>index.php/login/login" method="post">
                     
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control input-lg " type="text" required="" placeholder="Username">
+                            <input class="form-control input-lg " type="text" required="required" placeholder="Username" name="AccountNumber" id="AccountNumber" value="<?php if(isset($AccountNumber)) echo $AccountNumber;?>">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control input-lg" type="password" required="" placeholder="Password">
+                            <input class="form-control input-lg" type="password" required="required" placeholder="Password" name="Password" id="Password" value="<?php if(isset($Password)) echo $Password;?>">
                         </div>
                     </div>
 
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <div class="checkbox checkbox-success">
-                                <input id="checkbox-signup" type="checkbox">
+                                <input id="checkbox-signup" type="checkbox" name="RememberMe" id="RememberMe" <?php if(isset($RememberMe) && $RememberMe==true) echo 'checked="checked"';?>  >
                                 <label for="checkbox-signup">
                                     Remember me
                                 </label>
@@ -82,14 +83,14 @@
                         </div>
                     </div>
 
-                    <div class="form-group m-t-30">
-                        <div class="col-sm-7">
-                            <a href="recoverpw.html"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>
-                        </div>
-                        <div class="col-sm-5 text-right">
-                            <a href="register.html">Create an account</a>
-                        </div>
-                    </div>
+<!--                    <div class="form-group m-t-30">-->
+<!--                        <div class="col-sm-7">-->
+<!--                            <a href="recoverpw.html"><i class="fa fa-lock m-r-5"></i> Forgot your password?</a>-->
+<!--                        </div>-->
+<!--                        <div class="col-sm-5 text-right">-->
+<!--                            <a href="register.html">Create an account</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </form> 
                 </div>                                 
                 

@@ -30,9 +30,22 @@ class Category_model extends Model_base
         return $result;
     }
 
+    function get_all_categories(Category_model $model)
+    {
+
+        $this->db->where('CategoryType=',$model->CategoryType);
+
+        $query = $this->db->get('category');
+
+        if(!$query || $query->num_rows()== 0) return false;
+
+        $result= $query->result('Category_model');
+
+        return $result;
+    }
+
     function get_category(Category_model $model)
     {
-        $this->db->where('CategoryType', $model->CategoryType);
         $this->db->where('CategoryId', $model->CategoryId);
 
         $result =$this->db->get('category');
@@ -56,7 +69,6 @@ class Category_model extends Model_base
 
     function is_exist_category(Category_model $model)
     {
-        $this->db->where('CategoryType', $model->CategoryType);
         $this->db->where('CategoryId', $model->CategoryId);
 
         $result =$this->db->get('category');
@@ -91,7 +103,6 @@ class Category_model extends Model_base
     {
         if($this->is_exist_category_name($model)) return false;
 
-        $this->db->where('CategoryType', $model->CategoryType);
         $this->db->where('CategoryId', $model->CategoryId);
 
         $result = $this->db->update('category', $model);
