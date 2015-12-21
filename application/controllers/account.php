@@ -200,7 +200,6 @@ class Account extends My_controller
     function add_account()
     {
 
-
         $data = $this->get_json_object();
 
         if(!isset($data))
@@ -228,12 +227,8 @@ class Account extends My_controller
         echo json_encode($result);
     }
 
-    function update_account($account_type)
+    function update_account()
     {
-        if(!$this->is_valid_account_type($account_type)) return false;
-
-        $this->load->model('Account_model', '', true);
-
         $data = $this->get_json_object();
 
         if(!isset($data))
@@ -243,11 +238,13 @@ class Account extends My_controller
             return false;
         }
 
+        if(!$this->is_valid_account_type($data->AccountType)) return false;
+
+        $this->load->model('Account_model', '', true);
+
         $account = new Account_model();
 
         Model_base::map_objects($account, $data);
-
-        $account->AccountType = $account_type;
 
         $result = $this->Account_model->udpate_account($account);
 
