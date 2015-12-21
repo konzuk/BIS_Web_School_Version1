@@ -1,339 +1,50 @@
 ﻿
 <div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Manage Users</h3>
-            </div>
-            <div class="panel-body table-rep-plugin">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="m-b-30">
-                            <button class="btn btn-success waves-effect waves-light" ng-click="createUser('lg')">Add New User <i class="fa fa-plus"></i></button>
-                        </div>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Manage Users</h3>
+        </div>
+        <div class="panel-body table-rep-plugin">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="m-b-30">
+                        <button class="btn btn-success waves-effect waves-light" ng-click="createUser('lg')">Add New User <i class="fa fa-plus"></i></button>
                     </div>
                 </div>
-                <div class="table-responsive" style="overflow: hidden" data-pattern="priority-columns">
-                    <table datatable="" class="table table-small-font table-bordered table-striped">
-                        <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>UserName</th>
-                            <th>Password</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>Options</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>London</td>
-                            <td>61fdae</td>
-                            <td>093423453</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Charde Marshall</td>
-                            <td>Regional Director</td>
-                            <td>San Francisco</td>
-                            <td>61fdae</td>
-                            <td>093423453</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Haley Kennedy</td>
-                            <td>Senior Marketing Designer</td>
-                            <td>London</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Tatyana Fitzpatrick</td>
-                            <td>Regional Director</td>
-                            <td>London</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Michael Silva</td>
-                            <td>Marketing Designer</td>
-                            <td>London</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Paul Byrd</td>
-                            <td>Chief Financial Officer (CFO)</td>
-                            <td>New York</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Gloria Little</td>
-                            <td>Systems Administrator</td>
-                            <td>New York</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Bradley Greer</td>
-                            <td>Software Engineer</td>
-                            <td>London</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Dai Rios</td>
-                            <td>Personnel Lead</td>
-                            <td>Edinburgh</td>
-                            <td>61fdae</td>
-                            <td>093425343</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jenette Caldwell</td>
-                            <td>Development Lead</td>
-                            <td>New York</td>
-                            <td>61fdae</td>
-                            <td>093423543</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Suki Burks</td>
-                            <td>Developer</td>
-                            <td>London</td>
-                            <td>61fdae</td>
-                            <td>093423435</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Prescott Bartlett</td>
-                            <td>Technical Author</td>
-                            <td>London</td>
-                            <td>61fdae</td>
-                            <td>093423435</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Gavin Cortez</td>
-                            <td>Team Leader</td>
-                            <td>San Francisco</td>
-                            <td>61fdae</td>
-                            <td>093423435</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Martena Mccray</td>
-                            <td>Post-Sales support</td>
-                            <td>Edinburgh</td>
-                            <td>61fdae</td>
-                            <td>093423435</td>
-                            <td>gryp1@gmail.com</td>
-                            <td>
-                                <a href="add_user.html" class="btn btn-warning btn-xs">Edit</a>
-                                <a href="#" onclick="return confirm('Are you sure you want to perform this action?')" class="btn btn-danger btn-xs">Delete</a>
-                            </td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+            </div>
+            <div class="table-responsive" style="overflow: hidden" data-pattern="priority-columns">
+                <table datatable="ng" class="table table-small-font table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>UserName</th>
+                        <th>Password</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                <tr ng-repeat="user in users">
+                    <td>{{user.FirstName}}</td>
+                    <td>{{user.LastName}}</td>
+                    <td>{{user.AccountNumber}}</td>
+                    <td>{{user.Password}}</td>
+                    <td>{{user.PhoneNumber}}</td>
+                    <td>{{user.Email}}</td>
+                    <td>
+                        <a class="btn btn-warning btn-xs" ng-click="edit(user)">Edit</a>
+                        <a class="btn btn-danger btn-xs" ng-click="delete(user)">Delete</a>
+                    </td>
+                </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 
 </div> <!-- End Row -->
 
