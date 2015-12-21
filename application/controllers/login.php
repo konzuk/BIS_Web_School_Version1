@@ -27,7 +27,7 @@ class Login extends CI_Controller
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
-        $account->AccountNumber = isset($_POST['AccountNumber'])? $_POST['AccountNumber']: '';
+        $account->UserName = isset($_POST['UserName'])? $_POST['UserName']: '';
         $account->Password = isset($_POST['Password'])? $_POST['Password'] : '';
 
         $result = $this->Account_model->login($account);

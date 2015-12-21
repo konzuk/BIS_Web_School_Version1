@@ -55,7 +55,7 @@
                     
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control input-lg " type="text" required="required" placeholder="Username" name="AccountNumber" id="AccountNumber" value="<?php if(isset($AccountNumber)) echo $AccountNumber;?>">
+                            <input class="form-control input-lg " type="text" required="required" placeholder="Username" name="UserName" id="UserName" value="<?php if(isset($UserName)) echo $UserName;?>">
                         </div>
                     </div>
 

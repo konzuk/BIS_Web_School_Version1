@@ -87,6 +87,23 @@ class Account extends My_controller
         return $result;
     }
 
+    function is_exist_user_name($account_type, $user_name, $account_id=0)
+    {
+        if(!$this->is_valid_account_type($account_type)) return false;
+
+        $this->load->model('Account_model', '', true);
+
+        $account = new Account_model();
+        $account->AccountType = $account_type;
+        $account->UserName = $user_name;
+        $account->AccountId = $account_id;
+
+        $result = $this->Account_model->is_exist_user_name($account);
+
+        echo $result;
+        return $result;
+    }
+
     function get_accounts($account_type, $current_page=1, $record_per_page= 20)
     {
         if(!$this->is_valid_account_type($account_type)) return false;
