@@ -216,6 +216,8 @@ class Account extends My_controller
 
         Model_base::map_objects($account, $data);
 
+        if($account->AccountType == 'Student') $account->IsActive = false;
+
         $result = $this->Account_model->add_account($account);
 
         if(!$result)
@@ -268,8 +270,6 @@ class Account extends My_controller
             return false;
         }
 
-        if(!$this->is_valid_account_type($data->AccountType)) return false;
-
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
@@ -286,13 +286,22 @@ class Account extends My_controller
         echo json_encode($result);
     }
 
-    function activate_account($account_id, $is_active=true)
+    function activate_account()
     {
+        $data = $this->get_json_object();
+
+        if(!isset($data))
+        {
+            //echo json_encode('Invalid account');
+            echo json_encode(false);
+            return false;
+        }
+
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
-        $account->AccountId = $account_id;
-        $account->IsActive = $is_active;
+        $account->AccountId = $data->AccountId;
+        $account->IsActive = $data->IsActive;
 
         $result = $this->Account_model->activate_account($account);
 
@@ -305,13 +314,22 @@ class Account extends My_controller
         echo json_encode($result);
     }
 
-    function reset_password($account_id)
+    function reset_password()
     {
+        $data = $this->get_json_object();
+
+        if(!isset($data))
+        {
+            //echo json_encode('Invalid account');
+            echo json_encode(false);
+            return false;
+        }
+
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
 
-        $account->AccountId = $account_id;
+        $account->AccountId = $data->AccountId;
 
         $result = $this->Account_model->reset_password($account);
 
