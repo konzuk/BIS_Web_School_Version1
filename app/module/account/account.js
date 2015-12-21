@@ -6,10 +6,26 @@
 
     var controllerId = "accountCon";
     app.controller(controllerId,
-        ["$scope","$uibModal", "common","data", account]);
+        ["$scope","$uibModal", "common","data","type", account]);
 
     function account($scope,$uibModal, common,data, type) {
         //type can be user,depositor,student
+
+
+        $scope.delete =  function (acc)
+        {
+            if (confirm("Do you want to delete account: " + acc.UserName)) {
+                data.post('account', "delete_account", acc).then(function (obj) {
+                    if (obj.data) {
+                        getRecords();
+                    }
+                    else {
+
+                    }
+                });
+            }
+        };
+
         $scope.showCreateAccount = function (size) {
 
             var modalInstance = $uibModal.open({
@@ -21,15 +37,49 @@
                 resolve: {
                     type: function () {
                         return type;
+                    },
+                    accountModel: function () {
+                        return null;
                     }
-                    //account: function () {
-                    //    return account;
-                    //}
                 }
             });
 
-            modalInstance.result.then(function (selectedItem) {
-                getRecords();
+            modalInstance.result.then(function (data) {
+                if(data) {
+                    getRecords();
+                }
+                else {
+                    //todo
+                }
+            });
+        };
+
+
+        $scope.showUpdateAccount = function (size, account) {
+
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'app/module/account/addEditAccountDialog.html',
+                controller: 'addEditAccountDialogCon',
+                backdrop: 'static',
+                size: size,
+                resolve: {
+                    type: function () {
+                        return type;
+                    },
+                    accountModel: function () {
+                        return angular.copy(account);
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (data) {
+                if(data) {
+                    getRecords();
+                }
+                else {
+                    //todo
+                }
             });
         };
 
@@ -41,11 +91,11 @@
 
         function getRecords()
         {
-            data.get('account', 'get_all_accounts','User').then(function (obj) {
+            data.get('account', 'get_all_accounts',type).then(function (obj) {
 
                 if(obj.data)
                 {
-                    $scope.users = obj.data;
+                    $scope.accounts = obj.data;
                 }
                 else
                 {

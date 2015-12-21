@@ -25,6 +25,12 @@
                     return $route.current.activeTab === activeTab;
                 }
                 else return false;
+            };
+            $rootScope.isActiveChild = function (child) {
+                if($route.current) {
+                    return $route.current.child === child;
+                }
+                else return false;
             }
         }]);
 
@@ -51,9 +57,10 @@
                                 title: "Manage User",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/user/user.html",
-                                controller: "addEditAccountDialogCon",
+                                controller: "accountCon",
                                 href:'#/account/user',
                                 parent:false,
+                                child:'user',
                                 resolve: {
                                     type: function () {
                                         return "User";
@@ -64,9 +71,10 @@
                                 title: "Manage Depositor",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/depositor/depositor.html",
-                                controller: "addEditAccountDialogCon",
+                                controller: "accountCon",
                                 href:'#/account/depositor',
                                 parent:false,
+                                child:'depositor',
                                 resolve: {
                                     type: function () {
                                         return "Depositor";
@@ -77,9 +85,10 @@
                                 title: "Manage Student",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/student/student.html",
-                                controller: "addEditAccountDialogCon",
+                                controller: "accountCon",
                                 href:'#/account/student',
                                 parent:false,
+                                child:'student',
                                 resolve: {
                                     type: function () {
                                         return "Student";
@@ -98,9 +107,10 @@
                                 activeTab: 'deposit',
                                 templateUrl: "app/module/deposit/deposit.html",
                                 controller: "depositCon",
+
                                 href:'#/deposit/deposit',
                                 parent:false,
-
+                                child:'deposit',
 
                             }).when("/deposit/profit", {
                                 title: "Profit",
@@ -109,6 +119,7 @@
                                 controller: "profitCon",
                                 href:'#/deposit/profit',
                                 parent:false,
+                                child:'profit',
 
 
 //start lesson tab
@@ -126,6 +137,7 @@
                                 controller: "categoryCon",
                                 href:'#/lesson/category',
                                 parent:false,
+                                child:'lessonCategory',
                                 resolve: {
                                     type: function () {
                                         return "lesson";
@@ -139,6 +151,7 @@
                                 controller: "postCon",
                                 href:'#/lesson/lesson',
                                 parent:false,
+                                child:'lesson',
                                 resolve: {
                                     type: function () {
                                         return "lesson";
@@ -160,6 +173,7 @@
                                 controller: "categoryCon",
                                 href:'#/event/category',
                                 parent:false,
+                                child:'eventCategory',
                                 resolve: {
                                     type: function () {
                                         return "event";
@@ -173,6 +187,7 @@
                                 controller: "postCon",
                                 href:'#/event/event',
                                 parent:false,
+                                child:'event',
                                 resolve: {
                                     type: function () {
                                         return "event";
@@ -196,6 +211,7 @@
                                 controller: "categoryCon",
                                 href:'#/news/category',
                                 parent:false,
+                                child:'newsCategory',
                                 resolve: {
                                     type: function () {
                                         return "news";
@@ -209,6 +225,7 @@
                                 controller: "postCon",
                                 href:'#/news/news',
                                 parent:false,
+                                child:'news',
                                 resolve: {
                                     type: function () {
                                         return "news";
@@ -229,7 +246,7 @@
                                 templateUrl: "app/module/post/category/category.html",
                                 controller: "categoryCon",
                                 href:'#/media/category',
-
+                                child:'mediaCategory',
                                 parent:false,
                                 resolve: {
                                     type: function () {
@@ -243,6 +260,7 @@
                                 templateUrl: "app/module/post/post/post.html",
                                 controller: "postCon",
                                 href:'#/media/media',
+                                child:'media',
                                 parent:false,
                                 resolve: {
                                     type: function () {
@@ -265,6 +283,7 @@
                                 controller: "pageCon",
                                 href:'#/page/contact',
                                 parent:false,
+                                child:'contact',
                                 resolve: {
                                     type: function () {
                                         return "contact";
@@ -278,6 +297,7 @@
                                 controller: "pageCon",
                                 href:'#/page/about',
                                 parent:false,
+                                child:'about',
                                 resolve: {
                                     type: function () {
                                         return "about";
@@ -286,7 +306,7 @@
 
 //end
             }).otherwise({
-                redirectTo: ""
+                redirectTo: "/home"
             });
         }
     ]);
@@ -312,6 +332,7 @@
                         href: route.href,
                         text: route.title,
                         activeTab: route.activeTab,
+                        child: route.child,
                     });
                 }
             }

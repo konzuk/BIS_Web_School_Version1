@@ -9,15 +9,19 @@
 
     var controllerId = "addEditAccountDialogCon";
     app.controller(controllerId,
-        ["$scope","$uibModalInstance","data", account]);
+        ["$scope","$uibModalInstance","data","type","accountModel", account]);
 
-    function account ($scope, $uibModalInstance,data,type, account) {
+    function account ($scope, $uibModalInstance,data,type,accountModel) {
+
+
 
         var controller = "account";
 
-        if(account)
+
+        if(accountModel)
         {
-            $scope.model = account;
+            $scope.isEdit = true;
+            $scope.model = accountModel;
         }
         else
         {
@@ -34,16 +38,26 @@
         }
 
         $scope.save = function () {
-            data.post(controller, "add_account", $scope.model).then(function(obj){
-                if(obj.data)
-                {
-                    $uibModalInstance.close('success');
-                }
-                else
-                {
+            if(!$scope.isEdit) {
+                data.post(controller, "add_account", $scope.model).then(function (obj) {
+                    if (obj.data) {
+                        $uibModalInstance.close(true);
+                    }
+                    else {
 
-                }
-            });
+                    }
+                });
+            }
+            else {
+                data.post(controller, "update_account", $scope.model).then(function (obj) {
+                    if (obj.data) {
+                        $uibModalInstance.close(true);
+                    }
+                    else {
+
+                    }
+                });
+            }
 
         };
 

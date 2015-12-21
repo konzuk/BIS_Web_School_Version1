@@ -185,7 +185,7 @@
                             <i class="md" ng-class="nav.icon"></i>
                             <span>{{nav.text}}</span></a>
                         <ul class="list-unstyled" >
-                            <li ng-repeat="ch in nav.child"><a ng-href="{{ch.href}}"><i class="fa fa-arrow-circle-right"></i><span>{{ch.text}}</span></a></li>
+                            <li ng-repeat="ch in nav.child" ng-class="{active: isActiveChild(ch.child)}"><a ng-href="{{ch.href}}"><i class="fa fa-arrow-circle-right"></i><span>{{ch.text}}</span></a></li>
                         </ul>
                     </li>
                 </ul>

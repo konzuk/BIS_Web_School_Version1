@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="m-b-30">
-                        <button class="btn btn-success waves-effect waves-light" ng-click="showCreateUser('lg')">Add New User <i class="fa fa-plus"></i></button>
+                        <button class="btn btn-success waves-effect waves-light" ng-click="showCreateAccount('lg')">Add New User <i class="fa fa-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -27,15 +27,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                <tr ng-repeat="user in users">
+                <tr ng-repeat="user in accounts">
                     <td>{{user.FirstName}}</td>
                     <td>{{user.LastName}}</td>
-                    <td>{{user.AccountNumber}}</td>
+                    <td>{{user.UserName}}</td>
                     <td>{{user.Password}}</td>
                     <td>{{user.PhoneNumber}}</td>
                     <td>{{user.Email}}</td>
                     <td>
-                        <a class="btn btn-warning btn-xs" ng-click="edit(user)">Edit</a>
+                        <a class="btn btn-warning btn-xs" ng-click="showUpdateAccount('lg',user)">Edit</a>
                         <a class="btn btn-danger btn-xs" ng-click="delete(user)">Delete</a>
                     </td>
                 </tr>
