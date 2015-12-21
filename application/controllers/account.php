@@ -246,7 +246,7 @@ class Account extends My_controller
 
         Model_base::map_objects($account, $data);
 
-        $result = $this->Account_model->udpate_account($account);
+        $result = $this->Account_model->update_account($account);
 
         if(!$result)
         {
