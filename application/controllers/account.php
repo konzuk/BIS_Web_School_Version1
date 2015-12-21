@@ -6,7 +6,7 @@ class Account extends My_controller
 
     function index()
 	{
-        $this->get_all_users();
+        $this->get_all_accounts('User');
 	}
 
     /*
@@ -46,13 +46,12 @@ class Account extends My_controller
             'Student' => 'Student'
         );
 
-        if(!isset($account_type) || array_key_exists($valid_account_types, $account_type))
+        if(!isset($account_type) || !array_key_exists($account_type, $valid_account_types))
         {
             echo false;
             return false;
         }
 
-        echo true;
         return true;
     }
 
@@ -128,11 +127,11 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
         echo json_encode($result);
+
     }
 
     function get_account($account_type, $account_id)
@@ -179,9 +178,9 @@ class Account extends My_controller
 
     }
 
-    function add_account($account_type)
+    function add_account()
     {
-        if(!$this->is_valid_account_type($account_type)) return false;
+
 
         $data = $this->get_json_object();
 
@@ -191,12 +190,13 @@ class Account extends My_controller
             return false;
         }
 
+        if(!$this->is_valid_account_type($data->AccountType)) return false;
+
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
 
         Model_base::map_objects($account, $data);
-        $account->AccountType = $account_type;
 
         $result = $this->Account_model->add_account($account);
 

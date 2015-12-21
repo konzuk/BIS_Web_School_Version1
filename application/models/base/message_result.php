@@ -51,14 +51,14 @@ class Message_result extends Model_Base
             $this->Models = $models;
 
             //Paging
-            $this->CurrentRecord = $model->CurrentRecord;
-            $this->RecordPerPage = $model->RecordPerPage > 0? $model->RecordPerPage : 20;
+//            $this->CurrentRecord = $model->CurrentRecord;
+//            $this->RecordPerPage = $model->RecordPerPage > 0? $model->RecordPerPage : 20;
 
-            if(isset($models))
-            {
-                $this->RecordCounts = $models[0]->RecordCounts;
-                $this->PageCounts = ceil($models[0]->RecordCounts / $this->RecordPerPage);
-            }
+//            if(isset($models))
+//            {
+//                $this->RecordCounts = $models[0]->RecordCounts;
+//                $this->PageCounts = ceil($models[0]->RecordCounts / $this->RecordPerPage);
+//            }
         }
 
     }

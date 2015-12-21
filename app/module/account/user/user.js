@@ -10,10 +10,9 @@
 
     function user($scope,$uibModal, common,data) {
 
-        data.get('account', 'manage_user').then(function (obj) {
-            $scope.users = obj.data.Models;
-        });
-        $scope.createUser = function (size) {
+
+
+        $scope.showCreateUser = function (size) {
 
             var modalInstance = $uibModal.open({
                 animation: true,
@@ -27,9 +26,7 @@
                 //}
             });
             modalInstance.result.then(function (selectedItem) {
-                data.get('account', 'manage_user').then(function (obj) {
-                    $scope.users = obj.data.Models;
-                });
+                getRecords();
             });
         };
 
@@ -39,8 +36,23 @@
 
 
         activate();
+
+        function getRecords()
+        {
+            data.get('account', 'get_all_accounts','User').then(function (obj) {
+
+                if(obj.data)
+                {
+                    $scope.users = obj.data;
+                }
+                else
+                {
+
+                }
+            });
+        }
         function activate() {
-            common.activateController([], controllerId)
+            common.activateController([getRecords()], controllerId)
                  .then(function () {});
         }
     };

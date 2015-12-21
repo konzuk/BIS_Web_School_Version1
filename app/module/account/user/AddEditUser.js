@@ -27,7 +27,7 @@
         }
 
         $scope.save = function () {
-            data.post(controller, "add_user", $scope.model).then(function(obj){
+            data.post(controller, "add_account", $scope.model).then(function(obj){
                 if(obj.data)
                 {
                     $uibModalInstance.close('success');

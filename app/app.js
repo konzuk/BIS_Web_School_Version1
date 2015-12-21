@@ -270,7 +270,7 @@
 
 //end
             }).otherwise({
-                redirectTo: "/home"
+                redirectTo: ""
             });
         }
     ]);

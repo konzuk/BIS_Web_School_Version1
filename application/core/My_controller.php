@@ -21,7 +21,12 @@ class My_controller extends CI_Controller
 
         if(!isset($user))
         {
-            header("location:". base_url()."index.php/login");
+
+            $location =  base_url()."index.php/login";
+            header("status: 521 $location");
+            header("Refresh: 0; url=$location");
+
+            exit;
         }
 
 //        $this->session->sess_destroy();

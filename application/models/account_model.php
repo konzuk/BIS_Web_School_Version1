@@ -103,6 +103,8 @@ class Account_model extends Model_base
     {
         if($this->is_exist_account_number($account)) return false;
 
+        $account->Password = Model_base::encrypt_password($account->Password);
+
         $result=$this->db->insert('account', $account);
 
         return $result;
@@ -113,6 +115,8 @@ class Account_model extends Model_base
         if($this->is_exist_account_number($account)) return false;
 
         $this->db->where('AccountId', $account->AccountId);
+
+        //if(isset($account->Password)) unset($account->Password);
 
         $result = $this->db->update('account', $account);
 
