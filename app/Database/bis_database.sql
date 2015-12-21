@@ -33,12 +33,13 @@ CREATE TABLE `account` (
   `WithdrawMethod` varchar(50) default NULL COMMENT 'Bank, Gryp, Other',
   `WithdrawMethodName` varchar(500) default NULL COMMENT 'Bank Name, Gryp Note, Other Note',
   `PhoneNumber` varchar(50) default NULL,
+  `UserName` varchar(50) NOT NULL,
   PRIMARY KEY  (`AccountId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `account` */
 
-insert  into `account`(`AccountId`,`AccountNumber`,`FirstName`,`LastName`,`Email`,`Password`,`PhotoPath`,`AccountType`,`IsActive`,`RegisterDate`,`WithdrawMethod`,`WithdrawMethodName`,`PhoneNumber`) values (1,'admin','admin','admin',NULL,'53c9bed922650a17de7907a71591fa00',NULL,'User',1,NULL,NULL,NULL,NULL),(3,'User','User','User',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL),(4,'Bora','Bora','Lim',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL),(5,'dd','dd','dd','dddd','dd',NULL,'User',NULL,NULL,NULL,NULL,'dddf'),(6,'asd','asd','asd','aaa55','ssa',NULL,'User',NULL,NULL,NULL,NULL,'aas'),(7,'bora1','bora',NULL,NULL,'161ebd7d45089b3446ee4e0d86dbcf92',NULL,'User',NULL,NULL,NULL,NULL,NULL);
+insert  into `account`(`AccountId`,`AccountNumber`,`FirstName`,`LastName`,`Email`,`Password`,`PhotoPath`,`AccountType`,`IsActive`,`RegisterDate`,`WithdrawMethod`,`WithdrawMethodName`,`PhoneNumber`,`UserName`) values (1,'admin','admin','admin',NULL,'53c9bed922650a17de7907a71591fa00',NULL,'User',1,NULL,NULL,NULL,NULL,'admin'),(3,'User','User','User',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'User'),(4,'Bora','Bora','Lim',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'Bora'),(5,'dd','dd','dd','dddd','dd',NULL,'User',NULL,NULL,NULL,NULL,'dddf','dd'),(6,'asd','asd','asd','aaa55','ssa',NULL,'User',NULL,NULL,NULL,NULL,'aas','asd'),(7,'bora1','bora',NULL,NULL,'161ebd7d45089b3446ee4e0d86dbcf92',NULL,'User',NULL,NULL,NULL,NULL,NULL,'bora1');
 
 /*Table structure for table `category` */
 
