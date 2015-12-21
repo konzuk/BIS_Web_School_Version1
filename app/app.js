@@ -51,25 +51,40 @@
                                 title: "Manage User",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/user/user.html",
-                                controller: "userCon",
+                                controller: "addEditAccountDialogCon",
                                 href:'#/account/user',
                                 parent:false,
+                                resolve: {
+                                    type: function () {
+                                        return "User";
+                                    }
+                                },
 
                             }).when("/account/depositor", {
                                 title: "Manage Depositor",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/depositor/depositor.html",
-                                controller: "depositorCon",
+                                controller: "addEditAccountDialogCon",
                                 href:'#/account/depositor',
                                 parent:false,
+                                resolve: {
+                                    type: function () {
+                                        return "Depositor";
+                                    }
+                                },
 
                             }).when("/account/student", {
                                 title: "Manage Student",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/student/student.html",
-                                controller: "student",
+                                controller: "addEditAccountDialogCon",
                                 href:'#/account/student',
                                 parent:false,
+                                resolve: {
+                                    type: function () {
+                                        return "Student";
+                                    }
+                                },
 
 //start deposit tab
             }).when("/deposit", {
@@ -85,6 +100,7 @@
                                 controller: "depositCon",
                                 href:'#/deposit/deposit',
                                 parent:false,
+
 
                             }).when("/deposit/profit", {
                                 title: "Profit",

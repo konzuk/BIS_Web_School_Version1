@@ -7,22 +7,29 @@
 
     var app = angular.module("app");
 
-    var controllerId = "addEditUserCon";
+    var controllerId = "addEditAccountDialogCon";
     app.controller(controllerId,
-        ["$scope","$uibModalInstance","data", user]);
+        ["$scope","$uibModalInstance","data", account]);
 
-    function user ($scope, $uibModalInstance,data, user) {
+    function account ($scope, $uibModalInstance,data,type, account) {
 
         var controller = "account";
 
-        if(user)
+        if(account)
         {
-            $scope.model = user;
+            $scope.model = account;
         }
         else
         {
-            data.get(controller, "initialize_user").then(function(obj){
-                $scope.model = obj.data;
+            data.get(controller, "initialize_account",type).then(function(obj){
+                if(obj.data)
+                {
+                    $scope.model = obj.data;
+                }
+                else
+                {
+
+                }
             });
         }
 
@@ -46,5 +53,3 @@
     };
 })();
 
-// Please note that $modalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.

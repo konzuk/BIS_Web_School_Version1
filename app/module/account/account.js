@@ -4,27 +4,30 @@
 
     var app = angular.module("app");
 
-    var controllerId = "userCon";
+    var controllerId = "accountCon";
     app.controller(controllerId,
-        ["$scope","$uibModal", "common","data", user]);
+        ["$scope","$uibModal", "common","data", account]);
 
-    function user($scope,$uibModal, common,data) {
-
-
-
-        $scope.showCreateUser = function (size) {
+    function account($scope,$uibModal, common,data, type) {
+        //type can be user,depositor,student
+        $scope.showCreateAccount = function (size) {
 
             var modalInstance = $uibModal.open({
                 animation: true,
-                templateUrl: 'app/module/account/user/AddEditUser.html',
-                controller: 'addEditUserCon',
-                size: size
-                //resolve: {
-                //    user: function () {
-                //        return user;
-                //    }
-                //}
+                templateUrl: 'app/module/account/addEditAccountDialog.html',
+                controller: 'addEditAccountDialogCon',
+                backdrop: 'static',
+                size: size,
+                resolve: {
+                    type: function () {
+                        return type;
+                    }
+                    //account: function () {
+                    //    return account;
+                    //}
+                }
             });
+
             modalInstance.result.then(function (selectedItem) {
                 getRecords();
             });
@@ -33,7 +36,6 @@
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
-
 
         activate();
 

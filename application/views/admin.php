@@ -499,9 +499,7 @@
 <!-- Module -->
 
 <script src="/app/module/home/home.js"></script>
-<script src="/app/module/account/depositor/depositor.js"></script>
-<script src="/app/module/account/user/user.js"></script>
-<script src="/app/module/account/student/student.js"></script>
+<script src="/app/module/account/account.js"></script>
 <script src="/app/module/deposit/deposit.js"></script>
 <script src="/app/module/deposit/profit.js"></script>
 <script src="/app/module/page/page.js"></script>
@@ -509,7 +507,7 @@
 <script src="/app/module/post/post/post.js"></script>
 
 
-<script src="/app/module/account/user/AddEditUser.js"></script>
+<script src="/app/module/account/addEditAccountDialog.js"></script>
 
 <script src="/app/template/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
 <script src="/app/template/assets/datatables/angular-datatables.min.js"></script>
