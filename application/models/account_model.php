@@ -127,8 +127,8 @@ class Account_model extends Model_base
 
     function add_account(Account_model $account)
     {
-        if($account->AccountType == 'Depositor' && $this->is_exist_account_number($account)) return false;
-        if($this->is_exist_user_name($account)) return false;
+        if($account->AccountType == 'Depositor' && (!isset($account->UserName) || $this->is_exist_account_number($account))) return false;
+        if(!isset($account->UserName) || $this->is_exist_user_name($account)) return false;
 
         $account->Password = Model_base::encrypt_password($account->Password);
 
@@ -139,8 +139,8 @@ class Account_model extends Model_base
 
     function update_account(Account_model $account)
     {
-        if($account->AccountType == 'Depositor' && $this->is_exist_account_number($account)) return false;
-        if($this->is_exist_user_name($account)) return false;
+        if($account->AccountType == 'Depositor' && (!isset($account->UserName) || $this->is_exist_account_number($account))) return false;
+        if(!isset($account->UserName) || $this->is_exist_user_name($account)) return false;
 
         $this->db->where('AccountId', $account->AccountId);
 
