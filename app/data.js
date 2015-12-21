@@ -4,6 +4,11 @@
 
     var app = angular.module('app');
 
+    function errorHandle(data)
+    {
+        // Handle error here
+    }
+
     app.factory("data", ['$http',
         //'$cacheFactory',
         '$q',
@@ -25,7 +30,7 @@
                     $http.get(serverbase + controller + '/' + method).then(function (results) {
                         //cache.put(method, results === undefined ? null : results);
                         deferred.resolve(results);
-                    });
+                    },errorHandle);
                 //} else {
                 //    deferred.resolve(test);
                 //}
@@ -40,7 +45,7 @@
                     $http.get(serverbase + controller + '/' + method+'/' + filter).then(function (results) {
                         //cache.put(method, results === undefined ? null : results);
                         deferred.resolve(results);
-                    });
+                    },errorHandle);
                 //} else {
                 //    deferred.resolve(test);
                 //}
@@ -55,7 +60,7 @@
                     $http.post(serverbase + controller + '/' + method, object).then(function (results) {
                         //cache.put(method, results === undefined ? null : results);
                         deferred.resolve(results);
-                    });
+                    },errorHandle);
                 //} else {
                 //    deferred.resolve(test);
                 //}
