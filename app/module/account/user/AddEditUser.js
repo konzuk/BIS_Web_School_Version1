@@ -15,7 +15,7 @@
 
         var controller = "account";
 
-        if(!user)
+        if(user)
         {
             $scope.model = user;
         }

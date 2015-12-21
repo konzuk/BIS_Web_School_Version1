@@ -6,7 +6,10 @@
 
     function errorHandle(data)
     {
-        // Handle error here
+        if(data && data.status === 521)
+        {
+            window.location = data.statusText;
+        }
     }
 
     app.factory("data", ['$http',
