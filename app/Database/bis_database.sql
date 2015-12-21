@@ -15,11 +15,11 @@ create database if not exists `bisloandatabase`;
 
 USE `bisloandatabase`;
 
-/*Table structure for table `accounttable` */
+/*Table structure for table `account` */
 
-DROP TABLE IF EXISTS `accounttable`;
+DROP TABLE IF EXISTS `account`;
 
-CREATE TABLE `accounttable` (
+CREATE TABLE `account` (
   `AccountId` int(6) NOT NULL auto_increment,
   `AccountNumber` varchar(50) default NULL,
   `FirstName` varchar(50) default NULL,
@@ -27,34 +27,37 @@ CREATE TABLE `accounttable` (
   `Email` varchar(200) default NULL,
   `Password` varchar(200) default NULL,
   `PhotoPath` varchar(500) default NULL,
-  `AccountType` varchar(50) default NULL COMMENT 'Admin, Employee,Student, Depositor ',
-  `IsActive` tinyint(1) NOT NULL,
+  `AccountType` varchar(50) NOT NULL default 'User' COMMENT 'Admin, Employee,Student, Depositor ',
+  `IsActive` tinyint(1) default NULL,
   `RegisterDate` datetime default NULL,
   `WithdrawMethod` varchar(50) default NULL COMMENT 'Bank, Gryp, Other',
   `WithdrawMethodName` varchar(500) default NULL COMMENT 'Bank Name, Gryp Note, Other Note',
+  `PhoneNumber` varchar(50) default NULL,
   PRIMARY KEY  (`AccountId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
-/*Data for the table `accounttable` */
+/*Data for the table `account` */
 
-/*Table structure for table `categorytable` */
+insert  into `account`(`AccountId`,`AccountNumber`,`FirstName`,`LastName`,`Email`,`Password`,`PhotoPath`,`AccountType`,`IsActive`,`RegisterDate`,`WithdrawMethod`,`WithdrawMethodName`,`PhoneNumber`) values (1,'admin','admin','admin',NULL,'53c9bed922650a17de7907a71591fa00',NULL,'User',1,NULL,NULL,NULL,NULL),(3,'User','User','User',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL),(4,'Bora','Bora','Lim',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL),(5,'dd','dd','dd','dddd','dd',NULL,'User',NULL,NULL,NULL,NULL,'dddf'),(6,'asd','asd','asd','aaa55','ssa',NULL,'User',NULL,NULL,NULL,NULL,'aas'),(7,'bora1','bora',NULL,NULL,'161ebd7d45089b3446ee4e0d86dbcf92',NULL,'User',NULL,NULL,NULL,NULL,NULL);
 
-DROP TABLE IF EXISTS `categorytable`;
+/*Table structure for table `category` */
 
-CREATE TABLE `categorytable` (
+DROP TABLE IF EXISTS `category`;
+
+CREATE TABLE `category` (
   `CategoryId` int(11) NOT NULL auto_increment,
   `CategoryName` varchar(200) default NULL,
   `CategoryType` varchar(50) NOT NULL COMMENT 'Activity/Event, News, Lesson,  ',
   PRIMARY KEY  (`CategoryId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `categorytable` */
+/*Data for the table `category` */
 
-/*Table structure for table `commentpostingtable` */
+/*Table structure for table `commentposting` */
 
-DROP TABLE IF EXISTS `commentpostingtable`;
+DROP TABLE IF EXISTS `commentposting`;
 
-CREATE TABLE `commentpostingtable` (
+CREATE TABLE `commentposting` (
   `CommentId` int(11) NOT NULL auto_increment,
   `AccountId` int(11) default NULL,
   `Comment` text,
@@ -64,13 +67,13 @@ CREATE TABLE `commentpostingtable` (
   PRIMARY KEY  (`CommentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `commentpostingtable` */
+/*Data for the table `commentposting` */
 
-/*Table structure for table `deposittable` */
+/*Table structure for table `deposit` */
 
-DROP TABLE IF EXISTS `deposittable`;
+DROP TABLE IF EXISTS `deposit`;
 
-CREATE TABLE `deposittable` (
+CREATE TABLE `deposit` (
   `DepositId` int(11) NOT NULL auto_increment,
   `DepositNumber` varchar(5) NOT NULL COMMENT '00001',
   `DepositAmount` double default NULL,
@@ -83,7 +86,7 @@ CREATE TABLE `deposittable` (
   PRIMARY KEY  (`DepositId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `deposittable` */
+/*Data for the table `deposit` */
 
 /*Table structure for table `media` */
 
@@ -99,11 +102,11 @@ CREATE TABLE `media` (
 
 /*Data for the table `media` */
 
-/*Table structure for table `posttable` */
+/*Table structure for table `post` */
 
-DROP TABLE IF EXISTS `posttable`;
+DROP TABLE IF EXISTS `post`;
 
-CREATE TABLE `posttable` (
+CREATE TABLE `post` (
   `PostId` int(11) NOT NULL auto_increment,
   `PostTitle` varchar(500) default NULL,
   `Post` text,
@@ -113,13 +116,29 @@ CREATE TABLE `posttable` (
   PRIMARY KEY  (`PostId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `posttable` */
+/*Data for the table `post` */
 
-/*Table structure for table `withdrawtable` */
+/*Table structure for table `user_sessions` */
 
-DROP TABLE IF EXISTS `withdrawtable`;
+DROP TABLE IF EXISTS `user_sessions`;
 
-CREATE TABLE `withdrawtable` (
+CREATE TABLE `user_sessions` (
+  `session_id` varchar(40) NOT NULL default '0',
+  `ip_address` varchar(45) NOT NULL default '0',
+  `user_agent` varchar(120) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL default '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY  (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `user_sessions` */
+
+/*Table structure for table `withdraw` */
+
+DROP TABLE IF EXISTS `withdraw`;
+
+CREATE TABLE `withdraw` (
   `WithdrawId` int(11) NOT NULL auto_increment,
   `WithdrawCode` varchar(5) default NULL COMMENT 'yymmxxx',
   `Principle` double default NULL,
@@ -127,12 +146,13 @@ CREATE TABLE `withdrawtable` (
   `WithdrawDate` datetime NOT NULL COMMENT 'Date to calculate interest',
   `DepositId` int(11) default NULL,
   `RepaymentFeeRate` double default '11' COMMENT '11% of Interest',
+  `RepaymentFee` double default NULL,
   `CreatedBy` int(11) default NULL,
   `CreatedDate` datetime NOT NULL,
   PRIMARY KEY  (`WithdrawId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `withdrawtable` */
+/*Data for the table `withdraw` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
