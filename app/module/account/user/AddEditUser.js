@@ -9,16 +9,22 @@
 
     var controllerId = "addEditUserCon";
     app.controller(controllerId,
-        ["$scope","$uibModalInstance", "common","data", user]);
+        ["$scope","$uibModalInstance","data", user]);
 
-    function user ($scope, $uibModalInstance,common,data) {
+    function user ($scope, $uibModalInstance,data, user) {
 
         var controller = "account";
 
-        data.get(controller, "initialize_account").then(function(obj){
-            $scope.model = obj.data;
-        });
-
+        if(!user)
+        {
+            $scope.model = user;
+        }
+        else
+        {
+            data.get(controller, "initialize_user").then(function(obj){
+                $scope.model = obj.data;
+            });
+        }
 
         $scope.save = function () {
             data.post(controller, "add_user", $scope.model).then(function(obj){

@@ -21,8 +21,8 @@
                 controller: 'addEditUserCon',
                 size: size
                 //resolve: {
-                //    items: function () {
-                //        return $scope.items;
+                //    user: function () {
+                //        return user;
                 //    }
                 //}
             });
