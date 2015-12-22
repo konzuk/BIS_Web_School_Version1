@@ -48,13 +48,7 @@ class Account extends My_controller
             'Student' => 'Student'
         );
 
-        if(!isset($account_type) || !array_key_exists($account_type, $valid_account_types))
-        {
-            echo false;
-            return false;
-        }
-
-        return true;
+        return array_key_exists($account_type, $valid_account_types);
     }
 
     function is_exist_account($account_id)
@@ -66,7 +60,6 @@ class Account extends My_controller
 
         $result = $this->Account_model->is_exist_account($account);
 
-        echo $result;
         return $result;
     }
 
@@ -83,7 +76,6 @@ class Account extends My_controller
 
         $result = $this->Account_model->is_exist_account_number($account);
 
-        echo $result;
         return $result;
     }
 
@@ -100,7 +92,6 @@ class Account extends My_controller
 
         $result = $this->Account_model->is_exist_user_name($account);
 
-        echo $result;
         return $result;
     }
 
@@ -153,21 +144,17 @@ class Account extends My_controller
 
     }
 
-    function get_account($account_type, $account_id)
+    function get_account($account_id)
     {
-        if(!$this->is_valid_account_type($account_type)) return false;
-
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
-        $account->AccountType = $account_type;
         $account->AccountId = $account_id;
 
         $result = $this->Account_model->get_account($account);
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -189,7 +176,6 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -204,7 +190,6 @@ class Account extends My_controller
 
         if(!isset($data))
         {
-            echo json_encode(false);
             return false;
         }
 
@@ -222,7 +207,6 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -235,8 +219,6 @@ class Account extends My_controller
 
         if(!isset($data))
         {
-            //echo json_encode('Invalid account');
-            echo json_encode(false);
             return false;
         }
 
@@ -252,7 +234,6 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -265,8 +246,6 @@ class Account extends My_controller
 
         if(!isset($data))
         {
-            //echo json_encode('Invalid account');
-            echo json_encode(false);
             return false;
         }
 
@@ -279,7 +258,6 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -307,7 +285,6 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -320,8 +297,6 @@ class Account extends My_controller
 
         if(!isset($data))
         {
-            //echo json_encode('Invalid account');
-            echo json_encode(false);
             return false;
         }
 
@@ -335,7 +310,6 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -349,7 +323,6 @@ class Account extends My_controller
 
         if(!isset($data))
         {
-            echo false;
             return false;
         }
 
@@ -364,7 +337,6 @@ class Account extends My_controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 

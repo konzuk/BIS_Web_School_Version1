@@ -34,12 +34,13 @@ CREATE TABLE `account` (
   `WithdrawMethodName` varchar(500) default NULL COMMENT 'Bank Name, Gryp Note, Other Note',
   `PhoneNumber` varchar(50) default NULL,
   `UserName` varchar(50) NOT NULL,
+  `AllowDelete` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`AccountId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `account` */
 
-insert  into `account`(`AccountId`,`AccountNumber`,`FirstName`,`LastName`,`Email`,`Password`,`PhotoPath`,`AccountType`,`IsActive`,`RegisterDate`,`WithdrawMethod`,`WithdrawMethodName`,`PhoneNumber`,`UserName`) values (1,'admin','admin','admin',NULL,'53c9bed922650a17de7907a71591fa00',NULL,'User',1,NULL,NULL,NULL,NULL,'admin'),(3,'User','User','User',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'User'),(4,'Bora','Bora','Lim',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'Bora'),(5,'dd','dd','dd','dddd','dd',NULL,'User',NULL,NULL,NULL,NULL,'dddf','dd'),(6,'asd','asd','asd','aaa55','ssa',NULL,'User',NULL,NULL,NULL,NULL,'aas','asd'),(7,'bora1','bora',NULL,NULL,'161ebd7d45089b3446ee4e0d86dbcf92',NULL,'User',NULL,NULL,NULL,NULL,NULL,'bora1');
+insert  into `account`(`AccountId`,`AccountNumber`,`FirstName`,`LastName`,`Email`,`Password`,`PhotoPath`,`AccountType`,`IsActive`,`RegisterDate`,`WithdrawMethod`,`WithdrawMethodName`,`PhoneNumber`,`UserName`,`AllowDelete`) values (1,'admin','admin','admin',NULL,'53c9bed922650a17de7907a71591fa00',NULL,'User',1,NULL,NULL,NULL,NULL,'admin',0),(3,'User','User','User',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'User',1),(4,'Bora','Bora','Lim',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'Bora',1),(5,'dd','dd','dd','dddd','dd',NULL,'User',NULL,NULL,NULL,NULL,'dddf','dd',1),(6,'asd','asd','asd','aaa55','ssa',NULL,'User',NULL,NULL,NULL,NULL,'aas','asd',1),(7,'bora1','bora',NULL,NULL,'161ebd7d45089b3446ee4e0d86dbcf92',NULL,'User',NULL,NULL,NULL,NULL,NULL,'bora1',1);
 
 /*Table structure for table `category` */
 
@@ -50,9 +51,11 @@ CREATE TABLE `category` (
   `CategoryName` varchar(200) default NULL,
   `CategoryType` varchar(50) NOT NULL COMMENT 'Activity/Event, News, Lesson,  ',
   PRIMARY KEY  (`CategoryId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `category` */
+
+insert  into `category`(`CategoryId`,`CategoryName`,`CategoryType`) values (1,'Page','Page');
 
 /*Table structure for table `commentposting` */
 
@@ -115,9 +118,11 @@ CREATE TABLE `post` (
   `CreatedBy` int(11) default NULL,
   `CategoryId` int(11) default NULL,
   PRIMARY KEY  (`PostId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `post` */
+
+insert  into `post`(`PostId`,`PostTitle`,`Post`,`PostType`,`CreatedBy`,`CategoryId`) values (1,'About Us','Page description go here','Page',1,1),(2,'Contact Us','Page description go here','Page',1,1);
 
 /*Table structure for table `user_sessions` */
 

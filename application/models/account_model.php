@@ -94,9 +94,7 @@ class Account_model extends Model_base
 
         $result =$this->db->get('account');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result && $result->num_rows()> 0;
     }
 
     function is_exist_account_number(Account_model $account)
@@ -107,9 +105,7 @@ class Account_model extends Model_base
 
         $result =$this->db->get('account');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result && $result->num_rows()> 0;
     }
 
     function is_exist_user_name(Account_model $account)
@@ -120,9 +116,7 @@ class Account_model extends Model_base
 
         $result =$this->db->get('account');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result && $result->num_rows()> 0;
     }
 
     function add_account(Account_model $account)
@@ -153,6 +147,10 @@ class Account_model extends Model_base
 
     function delete_account(Account_model $account)
     {
+        $result = $this->get_account($account);
+        if(!$result || !$result->AllowDelete) return false;
+
+
         $this->db->where('AccountId', $account->AccountId);
 
         $result=$this->db->delete('account');

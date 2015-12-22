@@ -29,15 +29,7 @@ class Category extends My_Controller
             'Page' => 'Page'
         );
 
-        if(!isset($category_type) || !array_key_exists($valid_types, $category_type))
-        {
-            echo false;
-
-            return false;
-        }
-
-        echo true;
-        return true;
+        return array_key_exists($category_type, $valid_types);
     }
 
     function is_exist_category($category_id)
@@ -108,11 +100,10 @@ class Category extends My_Controller
         $input = new Category_model();
         $input->CategoryType = $category_type;
 
-        $result = $this->Category_model->get_all_categorys($input);
+        $result = $this->Category_model->get_all_categories($input);
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -128,17 +119,13 @@ class Category extends My_Controller
 
         $result = $this->Category_model->get_category($category);
 
-        if($result)
+        if(!$result)
         {
-            echo json_encode($result);
-            return true;
-        }
-        else
-        {
-            echo false;
             return false;
         }
 
+        echo json_encode($result);
+        return $result;
     }
 
     function get_category_by_name($category_type, $category_name)
@@ -155,23 +142,19 @@ class Category extends My_Controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
         echo json_encode($result);
-
+        return $result;
     }
 
     function add_category()
     {
-
-
         $data = $this->get_json_object();
 
         if(!isset($data))
         {
-            echo json_encode(false);
             return false;
         }
 
@@ -186,21 +169,19 @@ class Category extends My_Controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
         echo json_encode($result);
+        return $result;
     }
 
     function update_category()
     {
-
         $data = $this->get_json_object();
 
         if(!isset($data))
         {
-            echo false;
             return false;
         }
 
@@ -215,29 +196,36 @@ class Category extends My_Controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
         echo json_encode($result);
+        return $result;
     }
 
-    function delete_category($category_id)
+    function delete_category()
     {
+        $data = $this->get_json_object();
+
+        if(!isset($data))
+        {
+            return false;
+        }
+
         $this->load->model('Category_model', '', true);
 
         $category = new Category_model();
-        $category->CategoryId = $category_id;
+        $category->CategoryId = $data->CategoryId;
 
         $result = $this->Category_model->delete_category($category);
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
         echo json_encode($result);
+        return $result;
     }
 
 }

@@ -33,9 +33,21 @@ class Post_model extends Model_base
         return $result;
     }
 
-    function get_post(Post_model $model)
+    function get_all_posts(Post_model $model)
     {
         $this->db->where('PostType', $model->PostType);
+
+        $query = $this->db->get('post');
+
+        if(!$query || $query->num_rows()== 0) return false;
+
+        $result= $query->result('Post_model');
+
+        return $result;
+    }
+
+    function get_post(Post_model $model)
+    {
         $this->db->where('PostId', $model->PostId);
 
         $result =$this->db->get('post');
@@ -59,14 +71,11 @@ class Post_model extends Model_base
 
     function is_exist_post(Post_model $model)
     {
-        $this->db->where('PostType', $model->PostType);
         $this->db->where('PostId', $model->PostId);
 
         $result =$this->db->get('post');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result && $result->num_rows()> 0;
     }
 
     function is_exist_post_title(Post_model $model)
@@ -77,14 +86,12 @@ class Post_model extends Model_base
 
         $result =$this->db->get('post');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result && $result->num_rows()> 0;
     }
 
     function add_post(Post_model $model)
     {
-        if($this->is_exist_post_name($model)) return false;
+        if(!isset($model->PostTitle) || $this->is_exist_post_title($model)) return false;
 
         $result=$this->db->insert('post', $model);
         return $result;
@@ -92,9 +99,8 @@ class Post_model extends Model_base
 
     function update_post(Post_model $model)
     {
-        if($this->is_exist_post_name($model)) return false;
+        if(!isset($model->PostTitle) || $this->is_exist_post_title($model)) return false;
 
-        $this->db->where('PostType', $model->PostType);
         $this->db->where('PostId', $model->PostId);
 
         $result = $this->db->update('post', $model);
@@ -104,7 +110,6 @@ class Post_model extends Model_base
 
     function delete_post(Post_model $model)
     {
-        $this->db->where('PostType', $model->PostType);
         $this->db->where('PostId', $model->PostId);
 
         $result=$this->db->delete('post');

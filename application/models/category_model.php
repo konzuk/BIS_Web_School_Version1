@@ -2,7 +2,6 @@
 
 
 class Category_model extends Model_base
-
 {
 
     function __construct()
@@ -32,7 +31,6 @@ class Category_model extends Model_base
 
     function get_all_categories(Category_model $model)
     {
-
         $this->db->where('CategoryType=',$model->CategoryType);
 
         $query = $this->db->get('category');
@@ -73,9 +71,7 @@ class Category_model extends Model_base
 
         $result =$this->db->get('category');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result && $result->num_rows()> 0;
     }
 
     function is_exist_category_name(Category_model $model)
@@ -86,22 +82,21 @@ class Category_model extends Model_base
 
         $result =$this->db->get('category');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result && $result->num_rows()>0;
     }
 
     function add_category(Category_model $model)
     {
-        if($this->is_exist_category_name($model)) return false;
+        if(!isset($model->CategoryName) || $this->is_exist_category_name($model)) return false;
 
         $result=$this->db->insert('category', $model);
+
         return $result;
     }
 
     function update_category(Category_model $model)
     {
-        if($this->is_exist_category_name($model)) return false;
+        if(!isset($model->CategoryName) || $this->is_exist_category_name($model)) return false;
 
         $this->db->where('CategoryId', $model->CategoryId);
 
@@ -112,7 +107,6 @@ class Category_model extends Model_base
 
     function delete_category(Category_model $model)
     {
-        $this->db->where('CategoryType', $model->CategoryType);
         $this->db->where('CategoryId', $model->CategoryId);
 
         $result=$this->db->delete('category');

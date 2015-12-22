@@ -29,15 +29,7 @@ class Post extends My_Controller
             'Page' => 'Page'
         );
 
-        if(!isset($post_type) || !array_key_exists($valid_types, $post_type))
-        {
-            echo false;
-
-            return false;
-        }
-
-        echo true;
-        return true;
+        return array_key_exists($post_type, $valid_types);
     }
 
     function is_exist_post($post_id)
@@ -53,7 +45,7 @@ class Post extends My_Controller
         return $result;
     }
 
-    function is_exist_post_name($post_type, $post_name, $post_id=0)
+    function is_exist_post_title($post_type, $post_title, $post_id=0)
     {
         if(!$this->is_valid_post_type($post_type)) return false;
 
@@ -61,10 +53,10 @@ class Post extends My_Controller
 
         $post = new Post_model();
         $post->PostType = $post_type;
-        $post->PostName = $post_name;
+        $post->PostTitle = $post_title;
         $post->PostId = $post_id;
 
-        $result = $this->Post_model->is_exist_post_name($post);
+        $result = $this->Post_model->is_exist_post_title($post);
 
         echo $result;
         return $result;
@@ -101,7 +93,7 @@ class Post extends My_Controller
 
     function get_all_posts($post_type)
     {
-        if(!$this->is_valid_post_type($post_type)) return false;
+        if(!isset($post_type) || !$this->is_valid_post_type($post_type)) return false;
 
         $this->load->model('Post_model', '', true);
 
@@ -112,7 +104,6 @@ class Post extends My_Controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -128,20 +119,16 @@ class Post extends My_Controller
 
         $result = $this->Post_model->get_post($post);
 
-        if($result)
+        if(!$result)
         {
-            echo json_encode($result);
-            return true;
-        }
-        else
-        {
-            echo false;
             return false;
         }
 
+        echo json_encode($result);
+
     }
 
-    function get_post_by_name($post_type, $post_name)
+    function get_post_by_title($post_type, $post_title)
     {
         if(!$this->is_valid_post_type($post_type)) return false;
 
@@ -149,13 +136,12 @@ class Post extends My_Controller
 
         $post = new Post_model();
         $post->PostType = $post_type;
-        $post->PostNumber = $post_name;
+        $post->PostTitle = $post_title;
 
-        $result = $this->Post_model->get_post_by_name($post);
+        $result = $this->Post_model->get_post_by_title($post);
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -165,13 +151,10 @@ class Post extends My_Controller
 
     function add_post()
     {
-
-
         $data = $this->get_json_object();
 
         if(!isset($data))
         {
-            echo json_encode(false);
             return false;
         }
 
@@ -186,7 +169,6 @@ class Post extends My_Controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -195,7 +177,6 @@ class Post extends My_Controller
 
     function update_post()
     {
-
         $data = $this->get_json_object();
 
         if(!isset($data))
@@ -215,7 +196,6 @@ class Post extends My_Controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
@@ -233,7 +213,6 @@ class Post extends My_Controller
 
         if(!$result)
         {
-            echo false;
             return false;
         }
 
