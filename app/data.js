@@ -24,8 +24,6 @@
             //var cache = $cacheFactory('cache');
             var obj = {};
 
-
-
             obj.gets = function (controller,method) {
                 var deferred = $q.defer();
                 //var test = cache.get(method);

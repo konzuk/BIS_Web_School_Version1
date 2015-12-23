@@ -23,6 +23,12 @@
     <link href="/app/template/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
     <link href="/app/template/css/material-design-iconic-font.min.css" rel="stylesheet">
 
+
+
+    <!--Form Wizard-->
+    <link rel="stylesheet" type="text/css" href="/app/template/assets/form-wizard/jquery.steps.css" />
+
+
     <!-- animate css -->
     <link href="/app/template/css/animate.css" rel="stylesheet" />
 
@@ -32,10 +38,12 @@
     <!-- sweet alerts -->
     <link href="/app/template/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
 
+
+    <link href="/app/template/assets/summernote/summernote.css" rel="stylesheet" />
+
     <!-- Custom Files -->
     <link href="/app/template/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="/app/template/css/style.css" rel="stylesheet" type="text/css" />
-
 
 </head>
 
@@ -513,6 +521,13 @@
 <script src="/app/template/assets/datatables/angular-datatables.min.js"></script>
 <script src="/app/template/assets/datatables/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
 
+
+<script src="/app/template/assets/summernote/summernote.js"></script>
+<script src="/app/template/assets/summernote/angular-summernote.min.js"></script>
+
+<!--Form Wizard-->
+<script src="/app/template/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/app/template/assets/jquery.validate/jquery.validate.min.js"></script>
 
 </body>
 </html>

@@ -1,1 +1,50 @@
 ﻿
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Manage Student</h3>
+            </div>
+            <div class="panel-body table-rep-plugin">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="m-b-30">
+                            <button class="btn btn-success waves-effect waves-light" ng-click="showCreateAccount('lg')">Add New Student <i class="fa fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" style="overflow: hidden" data-pattern="priority-columns">
+                    <table datatable="ng" class="table table-small-font table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>UserName</th>
+                            <th>Password</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Options</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="student in accounts">
+                            <td>{{student.FirstName}}</td>
+                            <td>{{student.LastName}}</td>
+                            <td>{{student.UserName}}</td>
+                            <td>{{student.Password}}</td>
+                            <td>{{student.PhoneNumber}}</td>
+                            <td>{{student.Email}}</td>
+                            <td>
+                                <a class="btn btn-warning btn-xs" ng-click="showUpdateAccount('lg',student)">Edit</a>
+                                <a class="btn btn-danger btn-xs" ng-click="delete(student)">Delete</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- End Row -->
+

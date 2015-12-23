@@ -4,6 +4,55 @@
 
     var app = angular.module('app');
 
+    app.directive('fileModel', ['$parse', function ($parse) {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attrs) {
+                var model = $parse(attrs.fileModel);
+                var modelSetter = model.assign;
+
+                element.bind('change', function(){
+                    scope.$apply(function(){
+
+                        var fd = new FormData();
+                        fd.append('file', file);
+                        console.log('file is ' );
+                        console.dir(fd);
+
+
+
+                        modelSetter(scope, element[0].files[0]);
+                    });
+                });
+            }
+        };
+    }]);
+
+    app.directive('uiWizardForm', ['$compile', function($compile) {
+        return {
+            link: function(scope, ele) {
+            ele.wrapInner('<div class="steps-wrapper">');
+            var steps = ele.children('.steps-wrapper').steps({
+                headerTag: "h3",
+                bodyTag: "section",
+                transitionEffect: "slideLeft"
+            });
+            $compile(steps)(scope)
+                }
+            }
+    }]);
+
+
+    app.directive('sidebarMenu', function() {
+        return {
+            // Restrict it to be an attribute in this case
+            restrict: 'A',
+            // responsible for registering DOM listeners as well as updating the DOM
+            link: function(scope, element, attrs) {
+                $(element).on('click', menuItemClick);
+            }
+        };
+    });
 
     app.directive('sidebarMenu', function() {
         return {

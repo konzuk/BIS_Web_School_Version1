@@ -2,7 +2,7 @@
     'use strict';
 
     var app = angular.module('app', [
-        'datatables', 'datatables.bootstrap',
+        'datatables', 'datatables.bootstrap','summernote',
         // Angular modules 
         'ngAnimate',        // animations
         'ngRoute',          // routing
@@ -54,7 +54,7 @@
                 icon: 'md-person',
                 parent:true,
                             }).when("/account/user", {
-                                title: "Manage User",
+                                title: "User",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/user/user.html",
                                 controller: "accountCon",
@@ -68,7 +68,7 @@
                                 },
 
                             }).when("/account/depositor", {
-                                title: "Manage Depositor",
+                                title: "Depositor",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/depositor/depositor.html",
                                 controller: "accountCon",
@@ -82,7 +82,7 @@
                                 },
 
                             }).when("/account/student", {
-                                title: "Manage Student",
+                                title: "Student",
                                 activeTab: 'account',
                                 templateUrl: "app/module/account/student/student.html",
                                 controller: "accountCon",
@@ -103,7 +103,7 @@
                 activeTab: 'deposit',
                 parent:true
                             }).when("/deposit/deposit", {
-                                title: "Manage Deposit",
+                                title: "Deposit",
                                 activeTab: 'deposit',
                                 templateUrl: "app/module/deposit/deposit.html",
                                 controller: "depositCon",
@@ -145,7 +145,7 @@
                                 },
 
                             }).when("/lesson/lesson", {
-                                title: "Manage Lesson",
+                                title: "Lesson",
                                 activeTab: 'lesson',
                                 templateUrl: "app/module/post/post/post.html",
                                 controller: "postCon",
@@ -181,7 +181,7 @@
                                 },
 
                             }).when("/event/event", {
-                                title: "Manage Event",
+                                title: "Event",
                                 activeTab: 'event',
                                 templateUrl: "app/module/post/post/post.html",
                                 controller: "postCon",
@@ -219,7 +219,7 @@
                                 },
 
                             }).when("/news/news", {
-                                title: "Manage News",
+                                title: "News",
                                 activeTab: 'news',
                                 templateUrl: "app/module/post/post/post.html",
                                 controller: "postCon",
@@ -255,7 +255,7 @@
                                 },
 
                             }).when("/media/media", {
-                                title: "Manage Media",
+                                title: "Media",
                                 activeTab: 'media',
                                 templateUrl: "app/module/post/post/post.html",
                                 controller: "postCon",
@@ -277,7 +277,7 @@
                 parent:true
 
                             }).when("/page/contact", {
-                                title: "Manage Contact",
+                                title: "Contact",
                                 activeTab: 'page',
                                 templateUrl: "app/module/page/page.html",
                                 controller: "pageCon",
@@ -291,7 +291,7 @@
                                 },
 
                             }).when("/page/about", {
-                                title: "Manage About",
+                                title: "About",
                                 activeTab: 'page',
                                 templateUrl: "app/module/page/page.html",
                                 controller: "pageCon",
