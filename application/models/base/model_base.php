@@ -13,6 +13,9 @@ class Model_base extends CI_Model
     function __construct()
     {
         parent::__construct();
+
+        date_default_timezone_set(date_default_timezone_get());
+        //date_default_timezone_get('Asia/Phnom_Penh');
     }
 
 

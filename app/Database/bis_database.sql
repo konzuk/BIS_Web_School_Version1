@@ -57,22 +57,6 @@ CREATE TABLE `category` (
 
 insert  into `category`(`CategoryId`,`CategoryName`,`CategoryType`) values (1,'Page','Page');
 
-/*Table structure for table `commentposting` */
-
-DROP TABLE IF EXISTS `commentposting`;
-
-CREATE TABLE `commentposting` (
-  `CommentId` int(11) NOT NULL auto_increment,
-  `AccountId` int(11) default NULL,
-  `Comment` text,
-  `PostedDate` datetime default NULL,
-  `CommentOn` varchar(50) default NULL COMMENT 'Page, Lesson, Event, News',
-  `CommentOnId` int(11) default NULL COMMENT 'PageId, LessonId, EventId, NewsId',
-  PRIMARY KEY  (`CommentId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-/*Data for the table `commentposting` */
-
 /*Table structure for table `deposit` */
 
 DROP TABLE IF EXISTS `deposit`;
@@ -98,9 +82,11 @@ DROP TABLE IF EXISTS `media`;
 
 CREATE TABLE `media` (
   `MediaId` int(11) NOT NULL auto_increment,
-  `MediaPath` text,
-  `MediaType` varchar(50) default NULL COMMENT 'Video, MP3,',
-  `Postid` int(11) default NULL,
+  `FilePath` varchar(1500) NOT NULL,
+  `MediaType` varchar(50) NOT NULL COMMENT 'Video, MP3, Image',
+  `FileName` varchar(500) NOT NULL default '',
+  `Url` varchar(1500) NOT NULL default '',
+  `Title` varchar(500) NOT NULL default '',
   PRIMARY KEY  (`MediaId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -124,6 +110,38 @@ CREATE TABLE `post` (
 
 insert  into `post`(`PostId`,`PostTitle`,`Post`,`PostType`,`CreatedBy`,`CategoryId`) values (1,'About Us','Page description go here','Page',1,1),(2,'Contact Us','Page description go here','Page',1,1);
 
+/*Table structure for table `post_comment` */
+
+DROP TABLE IF EXISTS `post_comment`;
+
+CREATE TABLE `post_comment` (
+  `CommentId` int(11) NOT NULL auto_increment,
+  `AccountId` int(11) default NULL,
+  `Comment` text,
+  `PostedDate` datetime default NULL,
+  `PostId` int(11) default NULL COMMENT 'PageId, LessonId, EventId, NewsId',
+  PRIMARY KEY  (`CommentId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `post_comment` */
+
+/*Table structure for table `post_media` */
+
+DROP TABLE IF EXISTS `post_media`;
+
+CREATE TABLE `post_media` (
+  `PostMediaId` int(11) NOT NULL auto_increment,
+  `PostId` int(11) NOT NULL,
+  `MediaId` int(11) NOT NULL,
+  PRIMARY KEY  (`PostMediaId`),
+  KEY `FK_postmedia_post` (`PostId`),
+  KEY `FK_postmedia_media` (`MediaId`),
+  CONSTRAINT `FK_postmedia_media` FOREIGN KEY (`MediaId`) REFERENCES `media` (`MediaId`) ON DELETE CASCADE,
+  CONSTRAINT `FK_postmedia_post` FOREIGN KEY (`PostId`) REFERENCES `post` (`PostId`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `post_media` */
+
 /*Table structure for table `user_sessions` */
 
 DROP TABLE IF EXISTS `user_sessions`;
@@ -146,7 +164,7 @@ DROP TABLE IF EXISTS `withdraw`;
 
 CREATE TABLE `withdraw` (
   `WithdrawId` int(11) NOT NULL auto_increment,
-  `WithdrawCode` varchar(5) default NULL COMMENT 'yymmxxx',
+  `WithdrawNumber` varchar(8) default NULL COMMENT 'yymmxxx',
   `Principle` double default NULL,
   `Interest` double default NULL,
   `WithdrawDate` datetime NOT NULL COMMENT 'Date to calculate interest',

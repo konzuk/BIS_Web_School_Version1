@@ -14,7 +14,7 @@ class Post_model extends Model_base
     public $PostTitle;
 	public $Post;
     public $PostType;
-	public $PostBy;
+	public $CreatedBy;
 	public $CategoryId;
 
 

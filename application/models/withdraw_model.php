@@ -9,7 +9,7 @@ class Withdraw_model extends Model_base {
     }
 
     public $WithdrawId;
-    public $WithdrawCode;
+    public $WithdrawNumber;
     public $Principle;
     public $Interest;
     public $WithdrawDate;
@@ -20,19 +20,24 @@ class Withdraw_model extends Model_base {
     public $CreatedDate;
 
 
-    function get_withdraws(Withdraw_model $model)
+    function get_all_withdraws(Withdraw_model $model)
     {
-        $query_string = "select (select count(*) from withdraw) as 'RecordCounts', d.* ".
-                        "from withdraw d and ($model->DepositId = 0 or d.Deposit = $model->DepositId) ".
-                        "limit $model->CurrentRecord, $model->RecordPerPage";
+        $result = $this->db->get('withdraw');
 
-        $query = $this->db->query($query_string);
+        if(!$result || $result->num_rows()== 0) return false;
 
-        if(!$query || $query->num_rows()== 0) return false;
+        return  $result->result('Withdraw_model');
+    }
 
-        $result= $query->result('Withdraw_model');
+    function get_withdraws_by_deposit(Withdraw_model $model)
+    {
+        $this->db->where('DepositId' , $model->DepositId);
 
-        return $result;
+        $result = $this->db->get('withdraw');
+
+        if(!$result || $result->num_rows()== 0) return false;
+
+        return  $result->result('Withdraw_model');
     }
 
     function get_withdraw(Withdraw_model $model)
@@ -52,34 +57,35 @@ class Withdraw_model extends Model_base {
 
         $result =$this->db->get('withdraw');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result->num_rows()> 0;
     }
 
-    function is_exist_withdraw_code(Withdraw_model $model)
+    function is_exist_withdraw_number(Withdraw_model $model)
     {
-        $this->db->where('WithdrawCode', $model->WithdrawCode);
+        $this->db->where('WithdrawNumber', $model->WithdrawNumber);
         $this->db->where('WithdrawId !=', $model->WithdrawId);
 
         $result =$this->db->get('withdraw');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result->num_rows()> 0;
     }
 
     function add_withdraw(Withdraw_model $model)
     {
-        if($this->is_exist_withdraw_code($model)) return false;
+        $this->generate_withdraw_number($model);
+
+        if($this->is_exist_withdraw_number($model)) return false;
 
         $result=$this->db->insert('withdraw', $model);
+
         return $result;
     }
 
     function update_account(Withdraw_model $model)
     {
-        if($this->is_exist_withdraw_code($model)) return false;
+        $this->generate_withdraw_number($model);
+
+        if($this->is_exist_withdraw_number($model)) return false;
 
         $this->db->where('WithdrawId', $model->WithdrawId);
 
@@ -97,5 +103,29 @@ class Withdraw_model extends Model_base {
         return $result;
     }
 
+    private function generate_withdraw_number(Withdraw_model $model)
+    {
+        if(isset($model->WithdrawNumber)) return $model->WithdrawNumber;
+
+        $prefix = date("ym");
+
+        $sql = "select WithdrawNumber from withdraw where WithdrawNumber like '$prefix%' order by WithdrawNumber desc limit 1";
+
+        $result = $this->db->query($sql);
+
+        $withdraw_number = $prefix."001";
+        if($result && $result->num_rows()>0)
+        {
+            $number = $result->first_row()->WithdrawNumber;
+            $number = (int) substr($number, 4);
+            $number ++;
+
+            $withdraw_number = $prefix.str_pad($number, 3, "0", 0);
+        }
+
+        $model->WithdrawNumber = $withdraw_number;
+
+        return $withdraw_number;
+    }
 
 }

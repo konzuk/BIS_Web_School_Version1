@@ -17,23 +17,25 @@ class Deposit_model extends Model_base {
     public $DurationMode;
     public $Description;
     public $AccountId;
-    public $AccountNumber;
-    public $AccountModel;
 
-
-    function get_deposits(Deposit_model $model)
+    function get_all_deposits(Deposit_model $model)
     {
-        $query_string = "select (select count(*) from deposit) as 'RecordCounts', d.*, a.AccountNumber ".
-                        "from deposit d  join account a on a.AccountId=d.AccountId  ".
-                        "limit $model->CurrentRecord, $model->RecordPerPage";
+        $result =$this->db->get('deposit');
 
-        $query = $this->db->query($query_string);
+        if(!$result || $result->num_rows()== 0) return false;
 
-        if(!$query || $query->num_rows()== 0) return false;
+        return $result->result('Deposit_model');
+    }
 
-        $result= $query->result('Deposit_model');
+    function get_deposits_by_account(Deposit_model $model)
+    {
+        $this->db->where('AccountId', $model->AccountId);
 
-        return $result;
+        $result =$this->db->get('deposit');
+
+        if(!$result || $result->num_rows()== 0) return false;
+
+        return $result->result('Deposit_model');
     }
 
     function get_deposit(Deposit_model $model)
@@ -64,9 +66,7 @@ class Deposit_model extends Model_base {
 
         $result =$this->db->get('deposit');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result->num_rows()> 0;
     }
 
     function is_exist_deposit_number(Deposit_model $model)
@@ -76,13 +76,13 @@ class Deposit_model extends Model_base {
 
         $result =$this->db->get('deposit');
 
-        if($result->num_rows()== 0) return false;
-
-        return true;
+        return $result->num_rows()> 0;
     }
 
     function add_deposit(Deposit_model $model)
     {
+        $this->generate_deposit_number($model);
+
         if($this->is_exist_deposit_number($model)) return false;
 
         $result=$this->db->insert('deposit', $model);
@@ -91,6 +91,8 @@ class Deposit_model extends Model_base {
 
     function update_account(Deposit_model $model)
     {
+        $this->generate_deposit_number($model);
+
         if($this->is_exist_deposit_number($model)) return false;
 
         $this->db->where('DepositId', $model->DepositId);
@@ -109,5 +111,25 @@ class Deposit_model extends Model_base {
         return $result;
     }
 
+    private function generate_deposit_number(Deposit_model $model)
+    {
+        if(isset($model->DepositNumber)) return $model->DepositNumber;
 
+        $sql = "select DepositNumber from deposit order by DepositNumber desc limit 1";
+
+        $result = $this->db->query($sql);
+
+        $deposit_number = "00001";
+        if($result && $result->num_rows()>0)
+        {
+            $number = (int) $result->first_row()->DepositNumber;
+            $number ++;
+
+            $deposit_number = str_pad($number, 5, "0", 0);
+        }
+
+        $model->DepositNumber = $deposit_number;
+
+        return $deposit_number;
+    }
 }

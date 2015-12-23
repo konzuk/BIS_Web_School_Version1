@@ -7,6 +7,10 @@ class My_controller extends CI_Controller
     {
         parent::__construct();
 
+        date_default_timezone_set(date_default_timezone_get());
+        //date_default_timezone_get('Asia/Phnom_Penh');
+
+
         $this->load->library('session');
         $this->load->helper('url');
 

@@ -78,7 +78,6 @@ class Account_model extends Model_base
 
     function get_account_by_name(Account_model $account)
     {
-        $this->db->where('AccountType', $account->AccountType);
         $this->db->where('UserName', $account->UserName);
 
         $result =$this->db->get('account');
@@ -110,7 +109,6 @@ class Account_model extends Model_base
 
     function is_exist_user_name(Account_model $account)
     {
-        $this->db->where('AccountType', $account->AccountType);
         $this->db->where('UserName', $account->UserName);
         $this->db->where('AccountId !=', $account->AccountId);
 
