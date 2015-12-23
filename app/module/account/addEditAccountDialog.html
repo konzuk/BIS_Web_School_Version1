@@ -4,14 +4,7 @@
     </div>
     <div class="modal-body">
         <div class="form">
-            <form class="cmxform form-horizontal tasi-form">
-                <div class="form-group">
-                    <label for="avatar" class="col-sm-3 control-label">Avatar</label>
-                    <div class="col-sm-9">
-                        <img class="panel" src="images/avatar-1.jpg" />
-                        <input type="file" name="userfile"  />
-                    </div>
-                </div>
+            <form id="myform"  class="cmxform form-horizontal tasi-form" ng-submit="save()" novalidate>
                 <div class="form-group ">
                     <label for="firstname" class="control-label col-lg-3">Firstname *</label>
                     <div class="col-lg-9">
@@ -21,12 +14,13 @@
                                type="text"
                                ng-model="model.FirstName"
                                required>
-
-                        <!--<span ng-show="myForm.email.$dirty && myForm.email.$invalid">-->
-                        <!--<label class="error" for="firstname" ng-show="myForm.email.$error.required">Email is required.</label>-->
-                        <!--<label class="error" for="firstname" ng-show="myForm.email.$error.email">Invalid email address.</label>-->
-                        <!--</span>-->
                     </div>
+
+                    <!--<span ng-show="myForm.email.$dirty && myForm.email.$invalid">-->
+                    <!--<label class="error" for="firstname" ng-show="myForm.email.$error.required">Email is required.</label>-->
+                    <!--<label class="error" for="firstname" ng-show="myForm.email.$error.email">Invalid email address.</label>-->
+                    <!--</span>-->
+
                 </div>
                 <div class="form-group ">
                     <label for="lastname" class="control-label col-lg-3">Lastname  *</label>
@@ -58,7 +52,7 @@
                         <input class=" form-control"
                                id="password"
                                placeholder="password"
-                               type="text"
+                               type="password"
                                ng-model="model.Password"
                                required>
                     </div>
@@ -82,15 +76,18 @@
                         <input class="form-control"
                                id="email"
                                placeholder="Email"
-                               type="text"
-                               ng-model="model.Email">
+                               type="email"
+                               ng-model="model.Email"
+                               required>
                     </div>
                 </div>
+
+
             </form>
         </div> <!-- .form -->
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+        <button class="btn btn-primary" type="submit" form="myform">Save</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>
