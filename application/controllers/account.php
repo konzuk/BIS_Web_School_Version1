@@ -6,7 +6,15 @@ class Account extends My_controller
 
     function index()
 	{
-        $this->get_all_accounts('User');
+        //foreach($_SERVER as $key=>$val) echo $key."=>".$val."<br>";
+
+//        echo $_SERVER['DOCUMENT_ROOT'];
+//
+//        echo BASEPATH."<br>";
+//        echo base_url("controller")."<br>";
+//        echo  site_url('controller');
+
+        //$this->get_all_accounts('User');
 	}
 
     /*

@@ -1,6 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* Storing Server Root
+ * created by Bora;
+ *
+ */
+$server_root = $_SERVER['DOCUMENT_ROOT'];
+$server_root = str_replace('\\','/',$server_root);
+$last_char = substr($server_root, strlen($server_root) - 1);
+if($last_char!='/') $server_root .= '/';
+
+define('SERVER_ROOT', $server_root) OR exit('No direct script access allowed');
+
+/*
+ *
+ * end by Bora
+ */
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -377,11 +395,10 @@ $config['encryption_key'] = '';
 //$config['sess_time_to_update'] = 300;
 //$config['sess_regenerate_destroy'] = FALSE;
 
-
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = BASEPATH.'application/cache/';
+$config['sess_save_path'] = SERVER_ROOT.'cache/';
 $config['sess_match_ip'] = TRUE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
