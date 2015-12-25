@@ -1,91 +1,162 @@
 
     <div class="modal-header">
-        <h3 class="modal-title">Create New User</h3>
+        <h3 class="modal-title">{{ title}}</h3>
     </div>
     <div class="modal-body">
         <div class="form">
-            <form id="myForm"  class="cmxform form-horizontal tasi-form" ng-submit="save()" novalidate>
+            <form id="myForm" name="myForm"  class="cmxform form-horizontal tasi-form"
+
+                  ng-submit="!myForm.$invalid && save()"
+                  novalidate>
+
+                <!--ng-submit="!myForm.$invalid && save()"-->
+
+                <div class="form-group">
+                    <label for="avatar" class="col-sm-3 control-label">Avatar</label>
+                    <div class="col-sm-9">
+                        <img class="panel" ngf-src="myFile"
+                             ngf-resize="{width: 200, height: 200, quality: 0.9}"
+                             ngf-size="{width: 200, height: 200, quality: 0.9}"
+                        />
+                        <input
+                                id="avatar"
+                                type="file"
+                                name="myFile"
+                                ng-model="myFile"
+                                ngf-pattern="'image/*'"
+                                ngf-accept="'image/*'"
+                                ngf-max-size="2MB"
+                                ngf-select
+                        />
+                        <my-validate field="myForm.myFile" label="Image" validating='submitted' >
+                            <!--<label class="error" ng-message="required">Email is required.</label>-->
+                        </my-validate>
+
+
+                    </div>
+
+                    <!--<div>{{myForm.myFile.$error}}</div>-->
+                </div>
+
                 <div class="form-group ">
+
+
+
                     <label for="firstname" class="control-label col-lg-3">Firstname *</label>
+
                     <div class="col-lg-9">
                         <input class=" form-control"
+                               name="firstname"
                                id="firstname"
                                placeholder="First Name"
                                type="text"
                                ng-model="model.FirstName"
+                               ng-model-options="{ updateOn: 'blur' }"
                                required>
+
+                        <my-validate field="myForm.firstname" label="First Name" validating='submitted' >
+                            <!--<label class="error" ng-message="required">Email is required.</label>-->
+                        </my-validate>
                     </div>
                 </div>
                 <div class="form-group ">
                     <label for="lastname" class="control-label col-lg-3">Lastname  *</label>
                     <div class="col-lg-9">
                         <input class=" form-control"
+                               name="lastname"
                                id="lastname"
                                placeholder="Last Name"
                                type="text"
                                ng-model="model.LastName"
+                               ng-model-options="{ updateOn: 'blur' }"
                                required>
+                        <my-validate field="myForm.lastname" label="Last Name" validating='submitted' >
+                            <!--<label class="error" ng-message="required">Email is required.</label>-->
+                        </my-validate>
                     </div>
+
+
                 </div>
                 <div class="form-group ">
-                    <label for="username" class="control-label col-lg-3">Username *</label>
+                    <label for="usernamefield" class="control-label col-lg-3">Username *</label>
                     <div class="col-lg-9">
 
                         <input class=" form-control"
-                               id="username"
+                               name="usernamefield"
+                               id="usernamefield"
                                placeholder="Username"
                                type="text"
                                ng-model="model.UserName"
+                               ng-model-options="{ updateOn: 'blur' }"
                                required>
+                        <my-validate field="myForm.usernamefield" label="Username" validating='submitted' >
+                            <!--<label class="error" ng-message="required">Email is required.</label>-->
+                        </my-validate>
+                    </div>
+
+                </div>
+                <div class="form-group " ng-hide="isEdit">
+                    <label for="passwordfield" class="control-label col-lg-3">Password *</label>
+                    <div class="col-lg-9">
+                        <input class=" form-control"
+                               name="passwordfield"
+                               id="passwordfield"
+                               placeholder="password"
+                               type="text"
+                               ng-model="model.Password"
+                               ng-model-options="{ updateOn: 'blur' }"
+                               ng-minlength="6"
+                               ng-required="!isEdit">
+                        <my-validate field="myForm.passwordfield" label="Password" validating='submitted' >
+                            <!--<label class="error" ng-message="required">Email is required.</label>-->
+                        </my-validate>
                     </div>
                 </div>
+
                 <div class="form-group ">
-                    <label for="password" class="control-label col-lg-3">Password *</label>
+                    <label for="email" class="control-label col-lg-3">Email *</label>
                     <div class="col-lg-9">
 
-                        <input class=" form-control"
-                               id="password"
-                               placeholder="password"
-                               type="password"
-                               ng-model="model.Password"
-                               required>
-                    </div>
-                </div>
+                        <input class="form-control"
+                               name="email"
+                               id="email"
+                               placeholder="Email"
+                               type="email"
+                               ng-model="model.Email"
+                               ng-model-options="{ updateOn: 'blur' }"
+                               ng-minlength="5"
+                               ng-maxlength="100"
+                               required />
 
+                        <my-validate field="myForm.email" label="Email" validating='submitted' >
+                            <!--<label class="error" ng-message="required">Email is required.</label>-->
+                        </my-validate>
+
+                    </div>
+
+
+                </div>
                 <div class="form-group ">
                     <label for="phoneNumber" class="control-label col-lg-3">Phone Number</label>
                     <div class="col-lg-9">
 
                         <input class="form-control"
+                               name="phoneNumber"
                                id="phoneNumber"
                                placeholder="Phone Number"
                                type="text"
-                               ng-model="model.PhoneNumber">
+                               ng-model="model.PhoneNumber"
+                               >
+                        <my-validate field="myForm.phoneNumber" label="Phone Number" validating='submitted' >
+                            <!--<label class="error" ng-message="required">Email is required.</label>-->
+                        </my-validate>
                     </div>
                 </div>
-                <div class="form-group ">
-                    <label for="email" class="control-label col-lg-3">Email</label>
-                    <div class="col-lg-9">
-
-                        <input class="form-control"
-                               id="email"
-                               placeholder="Email"
-                               type="email"
-                               ng-model="model.Email"
-                               required>
-                    </div>
-                    <span ng-messages="myForm.email.$dirty && myForm.email.$error" >
-                        <label class="error" ng-message="required">Email is required.</label>
-                        <label class="error" ng-message="email">Invalid email address.</label>
-                    </span>
-                </div>
-
-
             </form>
+            <!--<div>{{myForm.$error}}</div>-->
         </div> <!-- .form -->
-
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="submit" form="myForm">Save</button>
+        <button class="btn btn-primary" type="submit" ng-click ="submitted=true" form="myForm">Save</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
     </div>

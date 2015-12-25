@@ -45,9 +45,10 @@
     <link href="/app/template/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="/app/template/css/style.css" rel="stylesheet" type="text/css" />
 
+
+    <link href="/content/loading-bar.css" rel="stylesheet" type="text/css" />
+
 </head>
-
-
 
 <body class="fixed-left">
 
@@ -160,7 +161,6 @@
     </div>
     <!-- Top Bar End -->
 
-
     <!-- ========== Left Sidebar Start ========== -->
 
     <div class="left side-menu">
@@ -262,7 +262,6 @@
     </div>
     <!-- Left Sidebar End -->
 
-
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
@@ -289,7 +288,6 @@
     <!-- ============================================================== -->
     <!-- End Right content here -->
     <!-- ============================================================== -->
-
 
     <!-- Right Sidebar -->
     <div class="side-bar right-bar nicescroll">
@@ -405,8 +403,6 @@
 <!-- END wrapper -->
 
 
-
-
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -487,6 +483,9 @@
 <script src="/scripts/angular-route.min.js"></script>
 <script src="/scripts/angular-sanitize.min.js"></script>
 <script src="/scripts/angular-cookies.min.js"></script>
+<script src="/scripts/ng-file-upload-shim.min.js"></script>
+<script src="/scripts/ng-file-upload.min.js"></script>
+<script src="/scripts/loading-bar.js"></script>
 
 <!--template-->
 <script src="/scripts/TweenMax.min.js"></script>
@@ -528,6 +527,17 @@
 <!--Form Wizard-->
 <script src="/app/template/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="/app/template/assets/jquery.validate/jquery.validate.min.js"></script>
+
+
+
+<script type="text/ng-template" id="error-messages">
+    <label class="error" ng-message="required">This field is required.</label>
+    <label class="error" ng-message="email">Invalid email address.</label>
+    <label class="error" ng-message="minlength">This field is too short.</label>
+    <label class="error" ng-message="maxlength">This field is too long.</label>
+</script>
+
+
 
 </body>
 </html>

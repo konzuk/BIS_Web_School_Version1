@@ -45,4 +45,13 @@ class My_controller extends CI_Controller
         return json_decode($result);
     }
 
+    function get_object_file()
+    {
+
+        echo print_r($_POST);
+        echo print_r($_FILES);
+
+
+    }
+
 }

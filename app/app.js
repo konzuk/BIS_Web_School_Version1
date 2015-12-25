@@ -3,7 +3,9 @@
 
     var app = angular.module('app', [
         'datatables', 'datatables.bootstrap','summernote',
-        // Angular modules 
+        // Angular modules
+        'angular-loading-bar',
+        'ngFileUpload',
         'ngAnimate',        // animations
         'ngRoute',          // routing
         'ngMessages',       // validation
@@ -239,25 +241,10 @@
                 activeTab: 'media',
                 icon:'md-perm-media',
                 parent:true
-
-                            }).when("/media/category", {
-                                title: "Media Category",
-                                activeTab: 'media',
-                                templateUrl: "app/module/post/category/category.html",
-                                controller: "categoryCon",
-                                href:'#/media/category',
-                                child:'mediaCategory',
-                                parent:false,
-                                resolve: {
-                                    type: function () {
-                                        return "media";
-                                    }
-                                },
-
                             }).when("/media/media", {
                                 title: "Media",
                                 activeTab: 'media',
-                                templateUrl: "app/module/post/post/post.html",
+                                templateUrl: "app/module/media/media.html",
                                 controller: "postCon",
                                 href:'#/media/media',
                                 child:'media',

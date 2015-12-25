@@ -5,68 +5,51 @@
     var app = angular.module('app');
 
 
+    app.directive('myValidate', function() {
+        return {
+            restrict: 'EA',
+            transclude: true,
+            scope: {
+                submitted: '=validating',
+                field: '=field',
+                label: '@'
 
-    app.directive('student', function() {
-        //define the directive object
-        var directive = {};
+            },
+            template:   '<span ng-messages="(submitted || field.$dirty) && field.$error" >'+
+                            '<ng-transclude> </ng-transclude>'+
+                            '<label class="error" ng-message="pattern">File must be an {{label}}</label>' +
+                            '<label class="error" ng-message="required">{{label}} is required.</label>'+
+                            '<label class="error" ng-message="email">Invalid email address.</label>'+
+                            '<label class="error" ng-message="minlength">{{ label }} is too short.</label>'+
+                            '<label class="error" ng-message="maxlength">{{ label }} is too long.</label>' +
+                            '<label class="error" ng-message="maxSize">{{label}} is to large, it must be smaller than 10 Mb.</label>'+
+                            '<label class="error" ng-message="minSize">{{label}} is to small, it must be bigger than 1 Mb</label>'+
 
-        //restrict = E, signifies that directive is Element directive
-        directive.restrict = 'E';
-
-        //template replaces the complete element with its text.
-        directive.template =
-            '<span ng-show="myForm.email.$dirty && myForm.email.$invalid">' +
-                '<label class="error" for="firstname" ng-show="myForm.email.$error.required">Email is required.</label>' +
-                '<label class="error" for="firstname" ng-show="myForm.email.$error.email">Invalid email address.</label>' +
-            '</span>';
-
-
-            //"Student: <b>{{student.name}}</b> " +
-            //", Roll No: <b>{{student.rollno}}</b>";
-
-        //scope is used to distinguish each student element based on criteria.
-        directive.scope = {
-            student : "=name"
-        }
-
-        //compile is called during application initialization. AngularJS calls it once when html page is loaded.
-
-        directive.compile = function(element, attributes) {
-            element.css("border", "1px solid #cccccc");
-
-            //linkFunction is linked with each element with scope to get the element specific data.
-            var linkFunction = function($scope, element, attributes) {
-                element.html("Student: <b>"+$scope.student.name +"</b> , Roll No: <b>"+$scope.student.rollno+"</b><br/>");
-                element.css("background-color", "#ff00ff");
-            }
-            return linkFunction;
-        }
-        return directive;
+                        '</span>'
+        };
     });
 
 
 
-    app.directive('fileModel', ['$parse', function ($parse) {
+    app.directive("compareTo", function() {
         return {
-            restrict: 'A',
-            link: function(scope, element, attrs) {
-                var model = $parse(attrs.fileModel);
-                var modelSetter = model.assign;
+            require: "ngModel",
+            scope: {
+                otherModelValue: "=compareTo"
+            },
+            link: function(scope, element, attributes, ngModel) {
 
-                element.bind('change', function(){
-                    scope.$apply(function(){
+                ngModel.$validators.compareTo = function(modelValue) {
+                    return modelValue == scope.otherModelValue;
+                };
 
-                        var fd = new FormData();
-                        fd.append('file', file);
-                        console.log('file is ' );
-                        console.dir(fd);
-
-                        modelSetter(scope, element[0].files[0]);
-                    });
+                scope.$watch("otherModelValue", function() {
+                    ngModel.$validate();
                 });
             }
         };
-    }]);
+    });
+
 
     app.directive('uiWizardForm', ['$compile', function($compile) {
         return {

@@ -11,6 +11,10 @@
             window.location = data.statusText;
         }
     }
+    function progressHandle(data)
+    {
+
+    }
 
     app.factory("data", ['$http',
         //'$cacheFactory',
@@ -31,7 +35,7 @@
                     $http.get(serverbase + controller + '/' + method).then(function (results) {
                         //cache.put(method, results === undefined ? null : results);
                         deferred.resolve(results);
-                    },errorHandle);
+                    },errorHandle,progressHandle);
                 //} else {
                 //    deferred.resolve(test);
                 //}
@@ -46,22 +50,34 @@
                     $http.get(serverbase + controller + '/' + method+'/' + filter).then(function (results) {
                         //cache.put(method, results === undefined ? null : results);
                         deferred.resolve(results);
-                    },errorHandle);
+                    },errorHandle,progressHandle);
                 //} else {
                 //    deferred.resolve(test);
                 //}
                 return deferred.promise;
             };
            
-            obj.post = function (controller, method, object) {
+            obj.post = function (controller, method, object, file) {
 
                 var deferred = $q.defer();
                 //var test = cache.get(method);
                 //if (test === undefined) {
-                    $http.post(serverbase + controller + '/' + method, object).then(function (results) {
+                    $http.post(serverbase + controller + '/' + method, { model: object, file: file },
+                    {
+                        headers: { 'Content-Type': undefined},
+
+                        transformRequest: function (data) {
+                            var fd = new FormData();
+                            fd.append("model", angular.toJson(data.model));
+                            fd.append('file', data.file);
+                            return fd;
+                        }
+
+
+                    }).then(function (results) {
                         //cache.put(method, results === undefined ? null : results);
                         deferred.resolve(results);
-                    },errorHandle);
+                    },errorHandle,progressHandle);
                 //} else {
                 //    deferred.resolve(test);
                 //}
