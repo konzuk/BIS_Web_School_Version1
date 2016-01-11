@@ -20,7 +20,6 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>UserName</th>
-                            <th>Password</th>
                             <th>Phone Number</th>
                             <th>Email</th>
                             <th>Options</th>
@@ -31,10 +30,11 @@
                             <td>{{depositor.FirstName}}</td>
                             <td>{{depositor.LastName}}</td>
                             <td>{{depositor.UserName}}</td>
-                            <td>{{depositor.Password}}</td>
                             <td>{{depositor.PhoneNumber}}</td>
                             <td>{{depositor.Email}}</td>
                             <td>
+                                <a class="btn btn-info btn-xs" ng-click="resetPassword(depositor)"> Reset Password </a>
+                                <a class="btn btn-success btn-xs" style="width: 70px;" ng-click="activateAccount(depositor)">{{ depositor.IsActive == 1 ? 'Deactivate' : 'Activate' }}</a> |
                                 <a class="btn btn-warning btn-xs" ng-click="showUpdateAccount('lg',depositor)">Edit</a>
                                 <a class="btn btn-danger btn-xs" ng-click="delete(depositor)">Delete</a>
                             </td>

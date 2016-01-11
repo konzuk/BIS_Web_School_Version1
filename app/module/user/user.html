@@ -30,6 +30,7 @@
                                 <th>Password</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
+                                <th>Photo Path</th>
                                 <th>Options</th>
                             </tr>
                             </thead>
@@ -67,6 +68,7 @@
                                 <td>{{ user.Password }}</td>
                                 <td>{{ user.Phone }}</td>
                                 <td>{{ user.Email }}</td>
+                                <td>{{ user.PhotoFullPath }}</td>
                                 <td>
                                     <a class="btn btn-warning btn-xs">Edit</a>
                                     <a class="btn btn-danger btn-xs" ng-click="submit(user)">Delete</a>

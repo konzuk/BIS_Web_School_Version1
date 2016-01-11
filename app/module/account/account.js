@@ -26,6 +26,36 @@
             }
         };
 
+        $scope.resetPassword =  function (acc)
+        {
+            if (confirm("Do you want to reset password")) {
+                data.post('account', "reset_password", acc).then(function (obj) {
+                    if (obj.data) {
+                        //getRecords();
+                        alert("Reset password success!")
+                    }
+                    else {
+
+                    }
+                });
+            }
+        };
+
+        $scope.activateAccount =  function (acc)
+        {
+            if (confirm("Do you want to " + (acc.IsActive == 1 ? "Deactivate" : "Activate") + " account?")) {
+                acc.IsActive = acc.IsActive == 1 ? 0 : 1 ;
+                data.post('account', "activate_account", acc).then(function (obj) {
+                    if (obj.data) {
+                        //getRecords();
+                    }
+                    else {
+                        acc.IsActive = acc.IsActive == 1 ? 0 : 1 ;
+                    }
+                });
+            }
+        };
+
         $scope.showCreateAccount = function (size) {
 
             var modalInstance = $uibModal.open({

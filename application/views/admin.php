@@ -6,47 +6,47 @@
     <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
     <meta name="author" content="Coderthemes">
 
-    <link rel="shortcut icon" href="/app/template/images/favicon_1.ico">
+    <link rel="shortcut icon" href="<?php echo base_url();?>app/template/images/favicon_1.ico">
 
     <title>GRYP - Admin Dashboard</title>
 
     <!-- Base Css Files -->
-    <link href="/app/template/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>app/template/css/bootstrap.min.css" rel="stylesheet" />
 
 
     <!-- DataTables -->
-    <link href="/app/template/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>app/template/assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 
 
     <!-- Font Icons -->
-    <link href="/app/template/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/app/template/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
-    <link href="/app/template/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>app/template/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>app/template/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>app/template/css/material-design-iconic-font.min.css" rel="stylesheet">
 
 
 
     <!--Form Wizard-->
-    <link rel="stylesheet" type="text/css" href="/app/template/assets/form-wizard/jquery.steps.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>app/template/assets/form-wizard/jquery.steps.css" />
 
 
     <!-- animate css -->
-    <link href="/app/template/css/animate.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>app/template/css/animate.css" rel="stylesheet" />
 
     <!-- Waves-effect -->
-    <link href="/app/template/css/waves-effect.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>app/template/css/waves-effect.css" rel="stylesheet">
 
     <!-- sweet alerts -->
-    <link href="/app/template/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>app/template/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
 
 
-    <link href="/app/template/assets/summernote/summernote.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>app/template/assets/summernote/summernote.css" rel="stylesheet" />
 
     <!-- Custom Files -->
-    <link href="/app/template/css/helper.css" rel="stylesheet" type="text/css" />
-    <link href="/app/template/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>app/template/css/helper.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>app/template/css/style.css" rel="stylesheet" type="text/css" />
 
 
-    <link href="/content/loading-bar.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url();?>content/loading-bar.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -145,7 +145,7 @@
                             <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="/app/template/images/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+                            <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?php echo base_url();?>app/template/images/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                             <ul class="dropdown-menu">
                                 <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                                 <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
@@ -167,7 +167,7 @@
         <div class="sidebar-inner slimscrollleft">
             <div class="user-details">
                 <div class="pull-left">
-                    <img src="/app/template/images/users/avatar-1.jpg" alt="" class="thumb-md img-circle">
+                    <img src="<?php echo base_url();?>app/template/images/users/avatar-1.jpg" alt="" class="thumb-md img-circle">
                 </div>
                 <div class="user-info">
                     <div class="dropdown">
@@ -297,7 +297,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-1.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/avatar-1.jpg" alt="">
                         </div>
                         <span class="name">Chadengle</span>
                         <i class="fa fa-circle online"></i>
@@ -307,7 +307,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-2.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-2.jpg" alt="">
                         </div>
                         <span class="name">Tomaslau</span>
                         <i class="fa fa-circle online"></i>
@@ -317,7 +317,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-3.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-3.jpg" alt="">
                         </div>
                         <span class="name">Stillnotdavid</span>
                         <i class="fa fa-circle online"></i>
@@ -327,7 +327,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-4.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-4.jpg" alt="">
                         </div>
                         <span class="name">Kurafire</span>
                         <i class="fa fa-circle online"></i>
@@ -337,7 +337,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-5.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-5.jpg" alt="">
                         </div>
                         <span class="name">Shahedk</span>
                         <i class="fa fa-circle away"></i>
@@ -347,7 +347,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-6.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-6.jpg" alt="">
                         </div>
                         <span class="name">Adhamdannaway</span>
                         <i class="fa fa-circle away"></i>
@@ -357,7 +357,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-7.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-7.jpg" alt="">
                         </div>
                         <span class="name">Ok</span>
                         <i class="fa fa-circle away"></i>
@@ -367,7 +367,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-8.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-8.jpg" alt="">
                         </div>
                         <span class="name">Arashasghari</span>
                         <i class="fa fa-circle offline"></i>
@@ -377,7 +377,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-9.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-9.jpg" alt="">
                         </div>
                         <span class="name">Joshaustin</span>
                         <i class="fa fa-circle offline"></i>
@@ -387,7 +387,7 @@
                 <li class="list-group-item">
                     <a href="#">
                         <div class="avatar">
-                            <img src="/app/template/images/users/avatar-10.jpg" alt="">
+                            <img src="<?php echo base_url();?>app/template/images/users/avatar-10.jpg" alt="">
                         </div>
                         <span class="name">Sortino</span>
                         <i class="fa fa-circle offline"></i>
@@ -420,113 +420,113 @@
 </script>
 
 <!-- jQuery  -->
-<script src="/app/template/js/jquery.min.js"></script>
-<script src="/app/template/js/bootstrap.min.js"></script>
-<script src="/app/template/js/waves.js"></script>
-<script src="/app/template/js/wow.min.js"></script>
-<script src="/app/template/js/jquery.nicescroll.js" type="text/javascript"></script>
-<script src="/app/template/js/jquery.scrollTo.min.js"></script>
-<script src="/app/template/assets/chat/moment-2.2.1.js"></script>
-<script src="/app/template/assets/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="/app/template/assets/jquery-detectmobile/detect.js"></script>
-<script src="/app/template/assets/fastclick/fastclick.js"></script>
-<script src="/app/template/assets/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script src="/app/template/assets/jquery-blockui/jquery.blockUI.js"></script>
+<script src="<?php echo base_url();?>app/template/js/jquery.min.js"></script>
+<script src="<?php echo base_url();?>app/template/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>app/template/js/waves.js"></script>
+<script src="<?php echo base_url();?>app/template/js/wow.min.js"></script>
+<script src="<?php echo base_url();?>app/template/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>app/template/js/jquery.scrollTo.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/chat/moment-2.2.1.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/jquery-sparkline/jquery.sparkline.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/jquery-detectmobile/detect.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/fastclick/fastclick.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/jquery-blockui/jquery.blockUI.js"></script>
 
 <!-- sweet alerts -->
-<script src="/app/template/assets/sweet-alert/sweet-alert.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/sweet-alert/sweet-alert.min.js"></script>
 <script src="/app/template/assets/sweet-alert/sweet-alert.init.js"></script>
 
 <!-- flot Chart -->
-<script src="/app/template/assets/flot-chart/jquery.flot.js"></script>
-<script src="/app/template/assets/flot-chart/jquery.flot.time.js"></script>
-<script src="/app/template/assets/flot-chart/jquery.flot.tooltip.min.js"></script>
-<script src="/app/template/assets/flot-chart/jquery.flot.resize.js"></script>
-<script src="/app/template/assets/flot-chart/jquery.flot.pie.js"></script>
-<script src="/app/template/assets/flot-chart/jquery.flot.selection.js"></script>
-<script src="/app/template/assets/flot-chart/jquery.flot.stack.js"></script>
-<script src="/app/template/assets/flot-chart/jquery.flot.crosshair.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.time.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.resize.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.pie.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.selection.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.stack.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/flot-chart/jquery.flot.crosshair.js"></script>
 
 <!-- Counter-up -->
-<script src="/app/template/assets/counterup/waypoints.min.js" type="text/javascript"></script>
-<script src="/app/template/assets/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>app/template/assets/counterup/waypoints.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>app/template/assets/counterup/jquery.counterup.min.js" type="text/javascript"></script>
 
 <!-- CUSTOM JS -->
-<script src="/app/template/js/jquery.app.js"></script>
+<script src="<?php echo base_url();?>app/template/js/jquery.app.js"></script>
 
-<script src="/app/template/assets/datatables/jquery.dataTables.min.js"></script>
-<script src="/app/template/assets/datatables/dataTables.bootstrap.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/datatables/dataTables.bootstrap.js"></script>
 
 <!--form validation-->
-<script type="text/javascript" src="/app/template/assets/jquery.validate/jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>app/template/assets/jquery.validate/jquery.validate.min.js"></script>
 
 <!--form validation init-->
-<script type="text/javascript" src="/app/template/assets/jquery.validate/form-validation-init.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>app/template/assets/jquery.validate/form-validation-init.js"></script>
 
 
 
 <!-- Dashboard -->
-<script src="/app/template/js/jquery.dashboard.js"></script>
+<script src="<?php echo base_url();?>app/template/js/jquery.dashboard.js"></script>
 
 <!-- Chat -->
-<script src="/app/template/js/jquery.chat.js"></script>
+<script src="<?php echo base_url();?>app/template/js/jquery.chat.js"></script>
 
 <!-- Todo -->
-<script src="/app/template/js/jquery.todo.js"></script>
+<script src="<?php echo base_url();?>app/template/js/jquery.todo.js"></script>
 
 
 
-<script src="/scripts/angular.min.js"></script>
-<script src="/scripts/angular-aria.min.js"></script>
-<script src="/scripts/angular-animate.min.js"></script>
-<script src="/scripts/angular-messages.min.js"></script>
-<script src="/scripts/angular-route.min.js"></script>
-<script src="/scripts/angular-sanitize.min.js"></script>
-<script src="/scripts/angular-cookies.min.js"></script>
-<script src="/scripts/ng-file-upload-shim.min.js"></script>
-<script src="/scripts/ng-file-upload.min.js"></script>
-<script src="/scripts/loading-bar.js"></script>
+<script src="<?php echo base_url();?>scripts/angular.min.js"></script>
+<script src="<?php echo base_url();?>scripts/angular-aria.min.js"></script>
+<script src="<?php echo base_url();?>scripts/angular-animate.min.js"></script>
+<script src="<?php echo base_url();?>scripts/angular-messages.min.js"></script>
+<script src="<?php echo base_url();?>scripts/angular-route.min.js"></script>
+<script src="<?php echo base_url();?>scripts/angular-sanitize.min.js"></script>
+<script src="<?php echo base_url();?>scripts/angular-cookies.min.js"></script>
+<script src="<?php echo base_url();?>scripts/ng-file-upload-shim.min.js"></script>
+<script src="<?php echo base_url();?>scripts/ng-file-upload.min.js"></script>
+<script src="<?php echo base_url();?>scripts/loading-bar.js"></script>
 
 <!--template-->
-<script src="/scripts/TweenMax.min.js"></script>
+<script src="<?php echo base_url();?>scripts/TweenMax.min.js"></script>
 
 <!-- Bootstrapping -->
-<script src="/app/app.js"></script>
-<script src="/app/config.js"></script>
-<script src="/app/config.exceptionHandler.js"></script>
+<script src="<?php echo base_url();?>app/app.js"></script>
+<script src="<?php echo base_url();?>app/config.js"></script>
+<script src="<?php echo base_url();?>app/config.exceptionHandler.js"></script>
 <!-- common Modules -->
-<script src="/app/Common/common.js"></script>
-<script src="/app/Common/logger.js"></script>
+<script src="<?php echo base_url();?>app/Common/common.js"></script>
+<script src="<?php echo base_url();?>app/Common/logger.js"></script>
 
 <!-- app Services -->
-<script src="/app/data.js"></script>
-<script src="/app/directive.js"></script>
-<script src="/app/routemediator.js"></script>
+<script src="<?php echo base_url();?>app/data.js"></script>
+<script src="<?php echo base_url();?>app/directive.js"></script>
+<script src="<?php echo base_url();?>app/routemediator.js"></script>
 
 <!-- Module -->
 
-<script src="/app/module/home/home.js"></script>
-<script src="/app/module/account/account.js"></script>
-<script src="/app/module/deposit/deposit.js"></script>
-<script src="/app/module/deposit/profit.js"></script>
-<script src="/app/module/page/page.js"></script>
-<script src="/app/module/post/category/category.js"></script>
-<script src="/app/module/post/post/post.js"></script>
+<script src="<?php echo base_url();?>app/module/home/home.js"></script>
+<script src="<?php echo base_url();?>app/module/account/account.js"></script>
+<script src="<?php echo base_url();?>app/module/deposit/deposit.js"></script>
+<script src="<?php echo base_url();?>app/module/deposit/profit.js"></script>
+<script src="<?php echo base_url();?>app/module/page/page.js"></script>
+<script src="<?php echo base_url();?>app/module/post/category/category.js"></script>
+<script src="<?php echo base_url();?>app/module/post/post/post.js"></script>
 
 
-<script src="/app/module/account/addEditAccountDialog.js"></script>
+<script src="<?php echo base_url();?>app/module/account/addEditAccountDialog.js"></script>
 
-<script src="/app/template/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
-<script src="/app/template/assets/datatables/angular-datatables.min.js"></script>
-<script src="/app/template/assets/datatables/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>app/template/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/datatables/angular-datatables.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/datatables/plugins/bootstrap/angular-datatables.bootstrap.min.js"></script>
 
 
-<script src="/app/template/assets/summernote/summernote.js"></script>
-<script src="/app/template/assets/summernote/angular-summernote.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/summernote/summernote.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/summernote/angular-summernote.min.js"></script>
 
 <!--Form Wizard-->
-<script src="/app/template/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/app/template/assets/jquery.validate/jquery.validate.min.js"></script>
+<script src="<?php echo base_url();?>app/template/assets/form-wizard/jquery.steps.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo base_url();?>app/template/assets/jquery.validate/jquery.validate.min.js"></script>
 
 
 

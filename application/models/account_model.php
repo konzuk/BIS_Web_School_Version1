@@ -10,7 +10,6 @@ class Account_model extends Model_base
     }
 
     public $AccountId;
-    public $AccountNumber;
     public $LastName;
     public $FirstName;
     public $UserName;
@@ -64,18 +63,6 @@ class Account_model extends Model_base
         return $result->first_row('Account_model');
     }
 
-    function get_account_by_account_number(Account_model $account)
-    {
-        $this->db->where('AccountType', $account->AccountType);
-        $this->db->where('AccountNumber', $account->AccountNumber);
-
-        $result =$this->db->get('account');
-
-        if(!$result || $result->num_rows()== 0) return false;
-
-        return $result->first_row('Account_model');
-    }
-
     function get_account_by_name(Account_model $account)
     {
         $this->db->where('UserName', $account->UserName);
@@ -96,17 +83,6 @@ class Account_model extends Model_base
         return $result && $result->num_rows()> 0;
     }
 
-    function is_exist_account_number(Account_model $account)
-    {
-        $this->db->where('AccountType', $account->AccountType);
-        $this->db->where('AccountNumber', $account->AccountNumber);
-        $this->db->where('AccountId !=', $account->AccountId);
-
-        $result =$this->db->get('account');
-
-        return $result && $result->num_rows()> 0;
-    }
-
     function is_exist_user_name(Account_model $account)
     {
         $this->db->where('UserName', $account->UserName);
@@ -119,7 +95,6 @@ class Account_model extends Model_base
 
     function add_account(Account_model $account)
     {
-        if($account->AccountType == 'Depositor' && (!isset($account->UserName) || $this->is_exist_account_number($account))) return false;
         if(!isset($account->UserName) || $this->is_exist_user_name($account)) return false;
 
         $account->Password = Model_base::encrypt_password($account->Password);
@@ -131,7 +106,6 @@ class Account_model extends Model_base
 
     function update_account(Account_model $account)
     {
-        if($account->AccountType == 'Depositor' && (!isset($account->UserName) || $this->is_exist_account_number($account))) return false;
         if(!isset($account->UserName) || $this->is_exist_user_name($account)) return false;
 
         $this->db->where('AccountId', $account->AccountId);

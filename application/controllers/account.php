@@ -6,20 +6,25 @@ class Account extends My_controller
 
     function index()
 	{
-        //foreach($_SERVER as $key=>$val) echo $key."=>".$val."<br>";
+        //echo date('y-m-d H:i:s a');
 
-//        echo $_SERVER['DOCUMENT_ROOT'];
-//
-//        echo BASEPATH."<br>";
-//        echo base_url("controller")."<br>";
-//        echo  site_url('controller');
+        $this->get_all_accounts('User');
 
-        //$this->get_all_accounts('User');
 	}
 
     /*
      *  Manage User
      * */
+
+    function get_photo_site()
+    {
+        return $this->get_file_site()."accounts/";
+    }
+
+    function get_photo_path()
+    {
+        return $this->get_file_path()."accounts/";
+    }
 
     function initialize_account($account_type)
     {
@@ -29,6 +34,7 @@ class Account extends My_controller
 
         $result = new Account_model();
         $result->AccountType = $account_type;
+        $result->PhotoFullPath = $this->default_user_image_path();
 
         echo json_encode($result);
     }
@@ -161,45 +167,62 @@ class Account extends My_controller
 
         $result = $this->Account_model->get_account($account);
 
-        if(!$result)
+        if(!$result) return false;
+
+        if(isset($result->PhotoPath) && $result->PhotoPath!='')
         {
-            return false;
+            $result->PhotoFullPath = $this->get_photo_site().$result->PhotoPath;
         }
 
         echo json_encode($result);
 
     }
 
-    function get_account_by_account_number($account_type, $account_number)
+    function get_account_by_name($user_name)
     {
-        if(!$this->is_valid_account_type($account_type)) return false;
-
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
-        $account->AccountType = $account_type;
-        $account->AccountNumber = $account_number;
+        $account->UserName = $user_name;
 
-        $result = $this->Account_model->get_account_by_account_number($account);
+        $result = $this->Account_model->get_account_by_name($account);
 
-        if(!$result)
+        if(!$result) return false;
+
+        if(isset($result->PhotoPath) && $result->PhotoPath!='')
         {
-            return false;
+            $result->PhotoFullPath = $this->get_photo_site().$result->PhotoPath;
         }
 
         echo json_encode($result);
 
+    }
+
+    private function upload_user_image(Account_model $account, $delete_if_exist = true)
+    {
+        if(isset($_FILES['file']) && $_FILES['file']['name'] != '')
+        {
+            $file_name = $_FILES['file']['name'];
+            $file_name = $account->UserName.".".pathinfo($file_name, PATHINFO_EXTENSION);
+            $file_path = $this->get_photo_path();
+
+            //delete old file
+            if($delete_if_exist && !$this->delete_file($file_path.$file_name)) return false;
+
+            $upload = $this->upload_file($file_path , $file_name);
+            if(!$upload) return false;
+
+            $account->PhotoPath = $file_name;
+        }
+
+        return true;
     }
 
     function add_account()
     {
-
         $data = $this->get_json_object();
 
-        if(!isset($data))
-        {
-            return false;
-        }
+        if(!isset($data)) return false;
 
         if(!$this->is_valid_account_type($data->AccountType)) return false;
 
@@ -210,6 +233,9 @@ class Account extends My_controller
         Model_base::map_objects($account, $data);
 
         if($account->AccountType == 'Student') $account->IsActive = false;
+
+        //update photo
+        if(!$this->upload_user_image($account)) return false;
 
         $result = $this->Account_model->add_account($account);
 
@@ -225,10 +251,7 @@ class Account extends My_controller
     {
         $data = $this->get_json_object();
 
-        if(!isset($data))
-        {
-            return false;
-        }
+        if(!isset($data)) return false;
 
         if(!$this->is_valid_account_type($data->AccountType)) return false;
 
@@ -238,12 +261,12 @@ class Account extends My_controller
 
         Model_base::map_objects($account, $data);
 
+        //update photo
+        if(!$this->upload_user_image($account)) return false;
+
         $result = $this->Account_model->update_account($account);
 
-        if(!$result)
-        {
-            return false;
-        }
+        if(!$result) return false;
 
         echo json_encode($result);
     }
@@ -252,10 +275,12 @@ class Account extends My_controller
     {
         $data = $this->get_json_object();
 
-        if(!isset($data))
-        {
-            return false;
-        }
+        if(!isset($data)) return false;
+
+        //delete old file
+        if( isset($data->PhotoPath) &&
+            $data->PhotoPath != '' &&
+            !$this->delete_file($this->get_photo_path().$data->PhotoPath)) return false;
 
         $this->load->model('Account_model', '', true);
 
@@ -303,10 +328,7 @@ class Account extends My_controller
     {
         $data = $this->get_json_object();
 
-        if(!isset($data))
-        {
-            return false;
-        }
+        if(!isset($data)) return false;
 
         $this->load->model('Account_model', '', true);
 
@@ -316,10 +338,7 @@ class Account extends My_controller
 
         $result = $this->Account_model->reset_password($account);
 
-        if(!$result)
-        {
-            return false;
-        }
+        if(!$result) return false;
 
         echo true;
         return true;
@@ -327,32 +346,46 @@ class Account extends My_controller
 
     function change_password()
     {
-        $data = $this->get_json_object();
-
-        if(!isset($data))
-        {
-            return false;
-        }
-
         $this->load->model('Account_model', '', true);
 
         $account = new Account_model();
+        $old_password = isset($_POST['OldPassword'])? $_POST['OldPassword'] : '';
+        $new_password = isset($_POST['NewPassword'])? $_POST['NewPassword'] : '';
+        $account->UserName = isset($_POST['UserName'])? $_POST['UserName']: '';
 
-        $account->AccountId = $data->AccountId;
-        $account->Password = $data->Password;
+        $message = '';
 
-        $result = $this->Account_model->change_password($account);
-
-        if(!$result)
+        $account->Password = $old_password;
+        $result = $account->login($account);
+        if($result)
         {
-            return false;
+            $account->Password = $new_password;
+            $account->AccountId = $result->AccountId;
+            $result = $this->Account_model->change_password($account);
+            $message = 'Cannot change password.';
+        }
+        else
+        {
+            $message = 'Invalid user name or password.';
         }
 
-
-        echo true;
-        return true;
+        if($result)
+        {
+            header("location:". base_url()."index.php/login");
+        }
+        else
+        {
+            $account->OldPassword = $old_password;
+            $account->Passowrd = $new_password;
+            $account->Message = $message;
+            $this->show_change_password($account);
+        }
     }
 
+    function show_change_password(Account_model $account=null)
+    {
+        $this->load->view('admin/change_password', $account);
+    }
 
 }
 

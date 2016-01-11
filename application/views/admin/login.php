@@ -8,7 +8,7 @@
 
         <link rel="shortcut icon" href="<?php echo base_url();?>images/favicon_1.ico">
 
-        <title>Moltran - Responsive Admin Dashboard Template</title>
+        <title>Login Form</title>
 
         <!-- Base Css Files -->
         <link href="<?php echo base_url();?>css/bootstrap.min.css" rel="stylesheet" />
@@ -62,6 +62,7 @@
                     <div class="form-group">
                         <div class="col-xs-12">
                             <input class="form-control input-lg" type="password" required="required" placeholder="Password" name="Password" id="Password" value="<?php if(isset($Password)) echo $Password;?>">
+                            <?php if(isset($Message)) echo "<span style='color:red'> $Message</span>"; ?>
                         </div>
                     </div>
 

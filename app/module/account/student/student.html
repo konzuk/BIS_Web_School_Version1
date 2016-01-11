@@ -20,7 +20,6 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>UserName</th>
-                            <th>Password</th>
                             <th>Phone Number</th>
                             <th>Email</th>
                             <th>Options</th>
@@ -31,10 +30,10 @@
                             <td>{{student.FirstName}}</td>
                             <td>{{student.LastName}}</td>
                             <td>{{student.UserName}}</td>
-                            <td>{{student.Password}}</td>
                             <td>{{student.PhoneNumber}}</td>
                             <td>{{student.Email}}</td>
                             <td>
+                                <a class="btn btn-success btn-xs" style="width: 70px;" ng-click="activateAccount(student)">{{ student.IsActive == 1 ? 'Deactivate' : 'Activate' }}</a> |
                                 <a class="btn btn-warning btn-xs" ng-click="showUpdateAccount('lg',student)">Edit</a>
                                 <a class="btn btn-danger btn-xs" ng-click="delete(student)">Delete</a>
                             </td>

@@ -41,6 +41,7 @@ class Login extends CI_Controller
         else
         {
             $account->RememberMe = isset($_POST['RememberMe']) && $_POST['RememberMe']==true;
+            $account->Message = 'Invalid user name or password.';
             $this->index($account);
         }
     }
