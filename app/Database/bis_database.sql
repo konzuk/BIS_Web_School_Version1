@@ -21,7 +21,6 @@ DROP TABLE IF EXISTS `account`;
 
 CREATE TABLE `account` (
   `AccountId` int(6) NOT NULL auto_increment,
-  `AccountNumber` varchar(50) default NULL,
   `FirstName` varchar(50) default NULL,
   `LastName` varchar(50) default NULL,
   `Email` varchar(200) default NULL,
@@ -36,11 +35,11 @@ CREATE TABLE `account` (
   `UserName` varchar(50) NOT NULL,
   `AllowDelete` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`AccountId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `account` */
 
-insert  into `account`(`AccountId`,`AccountNumber`,`FirstName`,`LastName`,`Email`,`Password`,`PhotoPath`,`AccountType`,`IsActive`,`RegisterDate`,`WithdrawMethod`,`WithdrawMethodName`,`PhoneNumber`,`UserName`,`AllowDelete`) values (1,'admin','admin','admin',NULL,'53c9bed922650a17de7907a71591fa00',NULL,'User',1,NULL,NULL,NULL,NULL,'admin',0),(3,'User','User','User',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'User',1),(4,'Bora','Bora','Lim',NULL,'b171d0d0674edadf2e2baf4425928d90',NULL,'User',NULL,NULL,NULL,NULL,NULL,'Bora',1),(5,'dd','dd','dd','dddd','dd',NULL,'User',NULL,NULL,NULL,NULL,'dddf','dd',1),(6,'asd','asd','asd','aaa55','ssa',NULL,'User',NULL,NULL,NULL,NULL,'aas','asd',1),(7,'bora1','bora',NULL,NULL,'161ebd7d45089b3446ee4e0d86dbcf92',NULL,'User',NULL,NULL,NULL,NULL,NULL,'bora1',1);
+insert  into `account`(`AccountId`,`FirstName`,`LastName`,`Email`,`Password`,`PhotoPath`,`AccountType`,`IsActive`,`RegisterDate`,`WithdrawMethod`,`WithdrawMethodName`,`PhoneNumber`,`UserName`,`AllowDelete`) values (1,'admin','admin',NULL,'53c9bed922650a17de7907a71591fa00',NULL,'User',1,NULL,NULL,NULL,NULL,'admin',0),(4,'Bora','Lim','boralim@gmail.com','53c9bed922650a17de7907a71591fa00','BoraLim.png','User',0,NULL,NULL,NULL,NULL,'BoraLim',1),(5,'St','St','sd@fdjs.com','f1329987e2b826e662dec43b32b12ca9','St.ico','Student',0,NULL,NULL,NULL,NULL,'St',1),(6,'dsf','dsf','sdf@kdsjf.com','53c9bed922650a17de7907a71591fa00','sdf.ico','Depositor',0,NULL,NULL,NULL,NULL,'sdf',1);
 
 /*Table structure for table `category` */
 
@@ -100,6 +99,7 @@ CREATE TABLE `post` (
   `PostId` int(11) NOT NULL auto_increment,
   `PostTitle` varchar(500) default NULL,
   `Post` text,
+  `Author` varchar(200) default NULL,
   `PostType` varchar(50) default NULL COMMENT 'Page, Lesson, News, Event, Media',
   `CreatedBy` int(11) default NULL,
   `CategoryId` int(11) default NULL,
@@ -108,7 +108,7 @@ CREATE TABLE `post` (
 
 /*Data for the table `post` */
 
-insert  into `post`(`PostId`,`PostTitle`,`Post`,`PostType`,`CreatedBy`,`CategoryId`) values (1,'About Us','Page description go here','Page',1,1),(2,'Contact Us','Page description go here','Page',1,1);
+insert  into `post`(`PostId`,`PostTitle`,`Post`,`Author`,`PostType`,`CreatedBy`,`CategoryId`) values (1,'About Us','Page description go here',NULL,'Page',1,1),(2,'Contact Us','Page description go here',NULL,'Page',1,1);
 
 /*Table structure for table `post_comment` */
 
