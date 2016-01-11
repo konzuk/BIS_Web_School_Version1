@@ -173,6 +173,10 @@ class Account extends My_controller
         {
             $result->PhotoFullPath = $this->get_photo_site().$result->PhotoPath;
         }
+        else
+        {
+            $result->PhotoFullPath = $this->default_user_image_path();
+        }
 
         echo json_encode($result);
 
@@ -192,6 +196,10 @@ class Account extends My_controller
         if(isset($result->PhotoPath) && $result->PhotoPath!='')
         {
             $result->PhotoFullPath = $this->get_photo_site().$result->PhotoPath;
+        }
+        else
+        {
+            $result->PhotoFullPath = $this->default_user_image_path();
         }
 
         echo json_encode($result);
