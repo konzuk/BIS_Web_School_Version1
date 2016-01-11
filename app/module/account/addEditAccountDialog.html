@@ -24,14 +24,14 @@
                         <input
                                 id="avatar"
                                 type="file"
-                                name="myFile"
-                                ng-model="myFile"
+                                name="model.PhotoFullPath"
+                                ng-model="model.PhotoFullPath"
                                 ngf-pattern="'image/*'"
                                 ngf-accept="'image/*'"
                                 ngf-max-size="2MB"
                                 ngf-select
                         />
-                        <my-validate field="myForm.myFile" label="Image" validating='submitted' >
+                        <my-validate field="myForm.model.PhotoFullPath" label="Image" validating='submitted' >
                             <!--<label class="error" ng-message="required">Email is required.</label>-->
                         </my-validate>
 

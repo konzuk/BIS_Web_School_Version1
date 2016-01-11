@@ -34,7 +34,7 @@
         var controller = "account";
 
 
-        $scope.myFile = "/app/template/images/avatar-1.jpg";
+
 
         if(accountModel)
         {
@@ -69,7 +69,7 @@
 
         $scope.save = function () {
             if(!$scope.isEdit) {
-                data.post(controller, "add_account", $scope.model, $scope.myFile).then(function (obj) {
+                data.post(controller, "add_account", $scope.model, $scope.model.PhotoFullPath).then(function (obj) {
                     if (obj.data) {
                         $uibModalInstance.close(true);
                     }
@@ -79,7 +79,7 @@
                 });
             }
             else {
-                data.post(controller, "update_account", $scope.model, $scope.myFile).then(function (obj) {
+                data.post(controller, "update_account", $scope.model, $scope.model.PhotoFullPath).then(function (obj) {
                     if (obj.data) {
                         $uibModalInstance.close(true);
                     }
