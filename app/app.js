@@ -205,7 +205,6 @@
                 activeTab: 'news',
                 icon:'md-chat',
                 parent:true
-
                             }).when("/news/category", {
                                 title: "News Category",
                                 activeTab: 'news',
@@ -236,24 +235,18 @@
 
 //start media tab
             }).when("/media", {
-                redirectTo: "/media/media",
                 title: "Media",
                 activeTab: 'media',
+                templateUrl: "app/module/media/media.html",
+                controller: "postCon",
+                href:'#/media',
                 icon:'md-perm-media',
-                parent:true
-                            }).when("/media/media", {
-                                title: "Media",
-                                activeTab: 'media',
-                                templateUrl: "app/module/media/media.html",
-                                controller: "postCon",
-                                href:'#/media/media',
-                                child:'media',
-                                parent:false,
-                                resolve: {
-                                    type: function () {
-                                        return "media";
-                                    }
-                                },
+                parent:true,
+                resolve: {
+                    type: function () {
+                        return "media";
+                    }
+                },
 
 //start page tab
             }).when("/page", {
